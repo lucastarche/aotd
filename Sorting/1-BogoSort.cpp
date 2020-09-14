@@ -1,9 +1,18 @@
 //BogoSort: the joke sort or stupid sort
-//Average Complexity: O(n * n!)
+//Consists of shuffling the array until it's sorted
+//Best case Complexity: O(n)
+//Average case Complexity: O(n * n!)
+//Worst case Complexity: O(infinite) 
 //Becomes slow after n = 15, and unusable after n = 20
 #include <bits/stdc++.h>
 
 using namespace std;
+
+void BogoSort(vector<int> &v) {
+    while (!is_sorted(v.begin(), v.end())) {
+        random_shuffle(v.begin(), v.end());
+    }
+}
 
 int main() {
     //Input
@@ -16,10 +25,7 @@ int main() {
         elements.push_back(temp);
     }
 
-    //Sorting
-    while (!is_sorted(elements.begin(), elements.end())) {
-        random_shuffle(elements.begin(), elements.end());
-    }
+    BogoSort(elements);
 
     //Output
     cout << "Sorted array:\n";

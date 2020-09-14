@@ -1,0 +1,14 @@
+Algorithm of the day: [[Algorithm-Name]] (Day n)
+[[Algorithm-Description]]
+Best case complexity: [[Best-Case]]
+Average case complexity: [[Avg-Case]]
+Worst case complexity: [[Worst-Case]]
+Becomes slow after n = [[Slow-N]], and unusable after n = [[Unusable-N]], where n is the number of elements.
+
+C++ implementation snippet:
+```cpp
+[[Algorithm-Implementation]]
+```
+
+
+Complete implementation in: [[Link]]

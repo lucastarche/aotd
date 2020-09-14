@@ -1,21 +1,25 @@
-//BubbleSort: easy to implement, but a bit slow
-//Consists of n iterations from start to finish, and swapping two elements if the first is less than the second
-//Best case Complexity: O(n^2)
-//Average case Complexity: O(n^2)
-//Worst case Complexity: O(n^2)
+//SelectionSort
+//For each index, you swap the current element with the one with the minimum value
+//Best case complexity: O(n^2)
+//Average case complexity: O(n^2)
+//Worst case complexity: O(n^2)
 //Becomes slow after n = 2000, and unusable after n = 10000
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void BubbleSort(vector<int> &v) {
+void SelectionSort(vector<int> &v) {
     int n = (int)v.size();
     for (int i = 0; i < n; i++) {
+        int minElement = v[i];
+        int minIndex = i;
         for (int j = i + 1; j < n; j++) {
-            if (v[i] > v[j]) {
-                swap(v[i], v[j]);
+            if (minElement > v[j]) {
+                minElement = v[j];
+                minIndex = j;
             }
         }
+        swap(v[i], v[minIndex]);
     }
 }
 
@@ -30,7 +34,7 @@ int main() {
         elements.push_back(temp);
     }
 
-    BubbleSort(elements);
+    SelectionSort(elements);
 
     //Output
     cout << "Sorted array:\n";
