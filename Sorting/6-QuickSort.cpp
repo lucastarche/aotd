@@ -4,7 +4,6 @@
 //Average case complexity: O(n log n)
 //Worst case complexity: O(n^2)
 //Becomes slow after n = 200000, and unusable after n = 1000000
-#include <algorithm>
 #include <bits/stdc++.h>
 
 using namespace std;
