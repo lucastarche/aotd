@@ -34,6 +34,7 @@ class LinkedList {
             Node* temp = head;
             while (temp != nullptr && n > 0) {
                 temp = temp->next;
+                n--;
             }
             return temp->val;
         }
@@ -41,7 +42,8 @@ class LinkedList {
 
 int main() {
     int n;
-    LinkedList *list;
+    cin >> n;
+    LinkedList *list = new LinkedList();
     for (int i = 0; i < n; i++) {
         int temp;
         cin >> temp;
