@@ -7,14 +7,16 @@
 
 using namespace std;
 
+template <typename T>
 struct Node {
-    int val;
+    T val;
     struct Node *next;
 };
 
+template <typename T>
 class LinkedList {
     private:
-        Node *head, *tail;
+        Node<T> *head, *tail;
     public:
         LinkedList() {
             head = nullptr;
@@ -22,7 +24,7 @@ class LinkedList {
         }
 
         void append(int n) {
-            Node* temp = new Node;
+            Node<T> *temp = new Node<T>;
             temp->val = n;
             temp->next = nullptr;
             if (head == nullptr) head = tail = temp;
@@ -31,7 +33,7 @@ class LinkedList {
 
         //Returns the value at the nth position, or the last one if there aren't enough nodes.
         int getValueAtPos(int n) {
-            Node* temp = head;
+            Node<T> *temp = head;
             while (temp != nullptr && n > 0) {
                 temp = temp->next;
                 n--;
@@ -43,7 +45,7 @@ class LinkedList {
 int main() {
     int n;
     cin >> n;
-    LinkedList *list = new LinkedList();
+    LinkedList<int> *list = new LinkedList<int>();
     for (int i = 0; i < n; i++) {
         int temp;
         cin >> temp;

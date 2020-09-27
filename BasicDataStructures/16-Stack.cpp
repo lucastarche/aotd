@@ -1,5 +1,5 @@
-//Queue
-//A First In, First Out (FIFO) data structure. Is useful for keeping things in a certain order, like when implementing an algorithm such as BFS. This specific implementation is similar to a Linked List.
+//Stack
+//A Last In, First Out (LIFO) data structure. It is used in problems such as bracket matching, or for making calculations in either Polish or Reverse Polish Notation, for example. This implementation uses a Double Linked List, but it can be more space efficient with a Reversed Linked List.
 //Both push() and pop() work in O(1)
 #include <bits/stdc++.h>
 
@@ -9,14 +9,15 @@ template <typename T>
 struct Node {
     T val;
     struct Node *next;
+    struct Node *prev;
 };
 
 template <typename T>
-class Queue {
+class Stack {
     private:
         Node<T> *head, *tail;
     public:
-        Queue() {
+        Stack() {
             head = nullptr;
             tail = nullptr;
         }
@@ -25,15 +26,16 @@ class Queue {
             Node<T> *temp = new Node<T>;
             temp->val = val;
             temp->next = nullptr;
+            temp->prev = tail;
             if (head == nullptr) head = tail = temp;
             else tail = tail->next = temp;
         }
 
         int pop() {
             if (head == nullptr) throw length_error("The container is empty");
-            int ans = head->val;
-            Node<T> *temp = head;
-            head = head->next;
+            int ans = tail->val;
+            Node<T> *temp = tail;
+            tail = tail->prev;
             delete temp;
             return ans;
         }
@@ -46,15 +48,15 @@ class Queue {
 int main() {
     int n;
     cin >> n;
-    Queue<int> *q = new Queue<int>();
+    Stack<int> *s = new Stack<int>();
     for (int i = 0; i < n; i++) {
         int temp;
         cin >> temp;
-        q->push(temp);
+        s->push(temp);
     }
 
-    while (!q->empty()) {
-        cout << q->pop() << ' ';
+    while (!s->empty()) {
+        cout << s->pop() << ' ';
     }
     cout << '\n';
 }
