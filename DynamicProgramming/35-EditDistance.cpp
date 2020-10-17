@@ -22,7 +22,7 @@ int EditDistance(string &a, string &b, int n, int m) {
         EditDistance(a, b, n - 1, m),
         EditDistance(a, b, n, m - 1),
         EditDistance(a, b, n - 1, m - 1)
-    );
+    ) + 1;
 }
 
 int EditDistance(string &a, string &b) {
