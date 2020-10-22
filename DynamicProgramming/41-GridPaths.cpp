@@ -5,7 +5,7 @@
 
 using namespace std;
 
-long long GridPaths(vector<vector<int>> &mat) {
+int GridPaths(vector<vector<int>> &mat) {
     int n = (int)mat.size();
     int m = (int)mat[0].size();
     vector<vector<int>> table(n, vector<int>(m));
