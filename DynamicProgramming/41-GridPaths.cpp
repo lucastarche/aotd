@@ -40,5 +40,5 @@ int main() {
         for (int j = 0; j < m; j++)
             cin >> matrix[i][j];
 
-    cout << "The smallest value to get to the bottom right is " << GridPaths(matrix) << '\n';
+    cout << "The greatest value to get to the bottom right is " << GridPaths(matrix) << '\n';
 }
