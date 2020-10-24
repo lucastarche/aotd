@@ -1,6 +1,4 @@
-//Toposort
-//Orders the nodes in a DAG in such a way that there is no edge that goes backwards, which allows us to sequenciate problems in such a way that we can apply DP.
-//It is a modified DFS, so the runtime is O(n + m) with Adjacency List, and O(n^2) with Adjacency Matrix.
+//Copy of AOTD#42
 #include "DAG.cpp"
 
 vector<int> toposort(DAG &g) {
@@ -30,20 +28,4 @@ vector<int> toposort(DAG &g) {
     }
 
     return order;
-}
-
-int main() {
-    int n, m;
-    cin >> n >> m;
-    DAG graph(n);
-    for (int i = 0; i < m; i++) {
-        int from, to;
-        cin >> from >> to;
-        graph.addEdge(from, to);
-    }
-
-    vector<int> order = toposort(graph);
-    cout << "Toposort: ";
-    for (auto a : order) cout << a << " ";
-    cout << '\n';
 }
