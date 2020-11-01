@@ -14,10 +14,10 @@ class Trie {
         vector<bool> ending;
         int size;
     public:
-        Trie(int N) {
-            trie.resize(N, vector<int>(256, 0));
-            ending.resize(N);
-            size = N;
+        Trie() {
+            trie.resize(1, vector<int>(256, 0));
+            ending.push_back(false);
+            size = 1;
         }
 
         void add(string in) {
@@ -52,15 +52,14 @@ class Trie {
 };
 
 int main() {
-    int n, size = 0;
+    int n;
     cin >> n;
     vector<string> lst(n);
     for (int i = 0; i < n; i++) {
         cin >> lst[i];
-        size += (int)lst[i].length();
     }
 
-    Trie trie(size);
+    Trie trie;
     for (auto s : lst) {
         trie.add(s);
     }
