@@ -4,7 +4,7 @@
 //The formula to calculate the hash of a string is:
 //Hash = (s[0]A^(n - 1) + s[1]A^(n - 2) + ... + s[n - 1]A^0) mod B
 //Where s[i] indicates the ith character, n is the string length, and A and B are two prechosen constants.
-//Runtime: Comparison in O(1), after O(n) preprocessing. However, if there are collitions it could go as high as O(n). This case is highly unlikely, but an attack can be made so it has this complexity.
+//Runtime: Comparison in O(1), after O(n) preprocessing. However, if there are collisions it could go as high as O(n). This case is highly unlikely, but an attack can be made so it has this complexity.
 #include <bits/stdc++.h>
 
 using namespace std;
