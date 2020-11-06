@@ -1,7 +1,7 @@
 //Prim's Algorithm
 //It is similar to Kruskal's, and solves the same problem, which is finding a Minimum Spanning Tree of a given graph.
 //The main idea is mantaining a priority queue which contains the weight and endpoint of edges, and we greedily select the ones that add a node and don't make new cycles.
-//Runtime: O(E log V)
+//Runtime: O(m log n)
 #include "GraphWAL.cpp"
 
 int Prim(GraphWAL &g) {
