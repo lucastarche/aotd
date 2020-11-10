@@ -24,7 +24,7 @@ int main() {
     int n, m;
     cin >> n >> m;
     GraphWAM graph(n);
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < m; i++) {
         int a, b, w;
         cin >> a >> b >> w;
         graph.addEdge(a, b, w);
