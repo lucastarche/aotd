@@ -27,7 +27,7 @@ int main() {
     int n, m;
     cin >> n >> m;
     GraphAL graph(n);
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
         graph.addEdge(a, b);
