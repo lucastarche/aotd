@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int IntersectingSegments(vector<pair<int, int>> segments) {
+int IntersectingSegments(const vector<pair<int, int>> &segments) {
 
     vector<pair<int, char>> events;
     for (int i = 0; i < (int)segments.size(); i++) {
