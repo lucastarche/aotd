@@ -12,7 +12,7 @@ class Tree {
         vector<int> parents;
         vector<vector<int>> children;
     public:
-        LinkedList() {
+        Tree() {
             parents.resize(1, 0);
             children.resize(1);
         }
