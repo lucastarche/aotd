@@ -1,6 +1,6 @@
-//Children Counting
-//In a tree, we can propagate the request to count the amount of children, given that this has a recursive property.
-//Each node is visited once, so it runs in linear time.
+//Longest Rooted Path
+//This determines the longest path we can get in the rooted subtree with root n. This will be useful later on when we want to get the tree's diameter.
+//We can use recursion again, thanks to the fact that the longest path of node n will be the max of each child, plus one.
 //Runtime: O(n)
 #include <bits/stdc++.h>
 
@@ -25,11 +25,10 @@ class Tree {
             n++;
         }
 
-        int countChildren(int start) {
-            if (start >= n) return -1;
+        int RootedLongestPath(int start) {
             int ans = 0;
             for (auto child : children[start]) {
-                ans += countChildren(child) + 1;
+                ans = max(ans, RootedLongestPath(child) + 1);
             }
             return ans;
         }
@@ -50,6 +49,6 @@ int main() {
     for (int i = 0; i < q; i++) {
         int query;
         cin >> query;
-        cout << tree.countChildren(query) << '\n';
+        cout << tree.RootedLongestPath(query) << '\n';
     }
 }

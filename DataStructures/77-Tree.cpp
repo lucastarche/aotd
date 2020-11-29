@@ -21,6 +21,7 @@ class Tree {
             int n = (int)parents.size();
             parents.push_back(parent);
             children[parent].push_back(n);
+            children.push_back({});
         }
 };
 
