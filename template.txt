@@ -10,5 +10,4 @@ C++ implementation snippet:
 [[Algorithm-Implementation]]
 ```
 
-
 Complete implementation in: [[Link]]
