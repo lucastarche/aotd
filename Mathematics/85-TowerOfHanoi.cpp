@@ -17,9 +17,10 @@ void TowerOfHanoi(int count, char s, char d, char i, vector<pair<char, char>> &a
     }
 }
 
-vector<pair<char, char>>& TowerOfHanoi(int count) {
+vector<pair<char, char>> TowerOfHanoi(int count) {
     vector<pair<char, char>> ans;
     TowerOfHanoi(count, 'A', 'C', 'B', ans);
+    return ans;
 }
 
 int main() {
