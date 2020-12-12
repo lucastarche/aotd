@@ -1,7 +1,7 @@
 //Euclid's Algorithm
 //This is a very old and well-known algorithm, which has over 2000 years of age.
 //It calculates the greatest common divisor of two numbers, that is, the greatest integer that divides both numbers.
-//It can be use dto get the Lowest Common Multiple as well, and has many applications in mathematics, like for example, getting irreducible fractions.
+//It can be used to get the Lowest Common Multiple as well, and has many applications in mathematics, like for example, getting irreducible fractions.
 //Runtime: O(log10 n)
 #include <bits/stdc++.h>
 
