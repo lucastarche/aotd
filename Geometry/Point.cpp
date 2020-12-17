@@ -1,7 +1,3 @@
-//Point
-//The most basic geometrical element. In this case we are using doubles to have more accurate coordinates.
-//Consists of n independent coordinates, where n is the dimensions we are working with (usually 2).
-//Runtime: dist runs in O(1), and returns the Euclidean distance.  
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -28,14 +24,3 @@ class Point {
         double getX() {return x;}
         double getY() {return y;}
 };
-
-int main() {
-    Point a, b;
-    double x, y;
-    cin >> x >> y;
-    a = Point(x, y);
-    cin >> x >> y;
-    b = Point(x, y);
-
-    cout << a.dist(b) << '\n';
-}
