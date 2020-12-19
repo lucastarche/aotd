@@ -1,8 +1,3 @@
-//Line
-//We can represent a line in the form of ax + by = c in the 2D plane.
-//Note that we can also use just two variables if we use the form a/bx + y = c/b, but we can not represent vertical lines.
-//We can assume b = 0 if the line is vertical, and b = 1 otherwise, so we will just represent b as a boolean.
-//Runtime: O(1)
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -26,16 +21,8 @@ class Line {
         bool operator==(Line other) const {
             return isParallel(other) && abs(other.c - c) < EPS;
         }
+
+        double getA() {return a;}
+        double getB() {return (double)vertical;}
+        double getC() {return c;}
 };
-
-int main() {
-    Line a, b;
-    double x, y;
-    bool vertical;
-    cin >> x >> y >> vertical;
-    a = Line(x, y, vertical);
-    cin >> x >> y >> vertical;
-    b = Line(x, y, vertical);
-
-    cout << a.isParallel(b) << '\n';
-}
