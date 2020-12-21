@@ -1,5 +1,5 @@
 //Termial
-//Analogous to factorial. Gives the sum of the numbers from 1 to n.
+//Analogous to factorial. Gives the sum of the integers from 1 to n. It is represented as n?
 //Runtime: O(n)
 #include <bits/stdc++.h>
 
