@@ -2,7 +2,7 @@
 //One of the big boy data structures, so I decided to split the implementation across several days.
 //A Red-Black Tree is a type of Self-Balancing Binary Tree, which allows for efficient insertion and deletion.
 //Every Node is assigned a colour, which can be Black or Red. 
-//The Red Black Tree mantains a property, that the path from the root to every leaf has the same amount of black nodes.
+//The Red Black Tree maintains a property, that the path from the root to every leaf has the same amount of black nodes.
 //To ensure this, we have the operations rotateLeft and rotateRight, as well as changing the colour of a Node.
 //This kind of tree can be used to implement ordered sets and maps. 
 //Runtime: insertion and deletion run both in O(log n). 
