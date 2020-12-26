@@ -28,12 +28,13 @@ template <typename T>
 class RBTree {
     private:
         Node<T> *root;
-    public:
-        RBTree();
+        Node<T> *null;
         void leftRotation(Node<T> *src);
         void rightRotation(Node<T> *src);
         void recolour(Node<T> *node);
         void colour(Node<T> *node, Colour newColour);
+    public:
+        RBTree();
         void insert(T val);
         void remove(T val);
         bool contains(T val);
