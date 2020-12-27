@@ -1,6 +1,6 @@
 //Red Black Tree: Rotations
 //The left and right rotations are two constant operations, which are used to balance the red black tree.
-//This operations have the property that the Binary-Search property of the tree is mantained.
+//This operations have the property that the Binary-Search property of the tree is maintained.
 //Runtime: O(1)
 #include "106-ConstructorAndColouring.cpp"
 
