@@ -5,7 +5,7 @@
 #include "106-ConstructorAndColouring.cpp"
 
 template <typename T>
-void RBTree::leftRotation(Node<T> *src) {
+void RBTree<T>::leftRotation(Node<T> *src) {
     if (src->right == null) return;
     Node<T> *x = src;
     Node<T> *y = src->right;
@@ -28,7 +28,7 @@ void RBTree::leftRotation(Node<T> *src) {
 }
 
 template <typename T>
-void RBTree::rightRotation(Node<T> *src) {
+void RBTree<T>::rightRotation(Node<T> *src) {
     if (src->left == null) return;
     Node<T> *x = src;
     Node<T> *y = src->left;

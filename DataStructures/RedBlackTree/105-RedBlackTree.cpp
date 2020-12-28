@@ -33,6 +33,10 @@ class RBTree {
         void rightRotation(Node<T> *src);
         void recolour(Node<T> *node);
         void colour(Node<T> *node, Colour newColour);
+
+        Node<T> *search(T val);
+        void fixInsertion(Node<T> *node);
+        void fixDeletion(Node<T> *node);
     public:
         RBTree();
         void insert(T val);
