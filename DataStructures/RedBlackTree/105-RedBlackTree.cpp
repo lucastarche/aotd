@@ -29,14 +29,17 @@ class RBTree {
     private:
         Node<T> *root;
         Node<T> *null;
+
         void leftRotation(Node<T> *src);
         void rightRotation(Node<T> *src);
         void recolour(Node<T> *node);
         void colour(Node<T> *node, Colour newColour);
 
         Node<T> *search(T val);
+        Node<T> *minimum(Node<T> *src);
+        void transplant(Node<T> *u, Node<T> *v);
         void fixInsertion(Node<T> *node);
-        void fixDeletion(Node<T> *node);
+        void fixRemove(Node<T> *node);
     public:
         RBTree();
         void insert(T val);
