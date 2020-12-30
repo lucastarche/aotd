@@ -3,7 +3,7 @@
 //This is because removing a node with no children is just setting the parent's pointer to null.
 //In the case of one children, we just move this children to the position of the original node.
 //When we have two, we have to replace the original node with the minimum node of the right subtree.
-//This node will mantain the binary-search property, because it is greater than the left subtree, and lower than the right subtree.
+//This node will maintain the binary-search property, because it is greater than the left subtree, and lower than the right subtree.
 //If the node being removed is black, we have to fix the tree, because the red-black property has been broken. 
 //Runtime: O(log n)
 #include "109-FixInsertion.cpp"
@@ -45,6 +45,7 @@ void RBTree<T>::remove(T val) {
     }
     else {
         y = minimum(z->right);
+        y_original_colour = y->col;
         x = y->right;
 
         if (y->parent == z) {
