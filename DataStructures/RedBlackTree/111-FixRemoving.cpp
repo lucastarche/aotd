@@ -62,7 +62,6 @@ void RBTree<T>::fixRemove(Node<T> *src) {
                     leftRotation(brother);
                     brother = src->parent->left;
                 }
-                //Case A.4: The right children of the brother is red
                 brother->col = src->parent->col;
                 src->parent->col = Colour::Black;
                 brother->left->col = Colour::Black;
