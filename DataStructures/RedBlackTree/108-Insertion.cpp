@@ -35,6 +35,7 @@ void RBTree<T>::insert(T val) {
     else y->right = z;
 
     //Complete initialization of z
+    z->data = val;
     z->parent = y;
     z->left = null;
     z->right = null;

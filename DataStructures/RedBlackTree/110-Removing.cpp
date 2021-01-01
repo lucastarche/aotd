@@ -66,4 +66,5 @@ void RBTree<T>::remove(T val) {
     if (y_original_colour == Colour::Black) {
         fixRemove(x);
     }
+    delete z;
 }

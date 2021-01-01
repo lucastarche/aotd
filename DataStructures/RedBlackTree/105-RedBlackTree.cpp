@@ -40,9 +40,12 @@ class RBTree {
         void transplant(Node<T> *u, Node<T> *v);
         void fixInsertion(Node<T> *node);
         void fixRemove(Node<T> *node);
+        void inOrder(Node<T> *src, vector<T> &ret);
     public:
         RBTree();
+        ~RBTree();
         void insert(T val);
         void remove(T val);
         bool contains(T val);
+        vector<T> inOrder();
 };

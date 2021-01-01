@@ -15,7 +15,7 @@ void RBTree<T>::fixRemove(Node<T> *src) {
             //Case A.1: Brother node is red
             if (brother->col == Colour::Red) {
                 brother->col = Colour::Black;
-                src->parent = Colour::Red;
+                src->parent->col = Colour::Red;
                 leftRotation(src->parent);
                 brother = src->parent->right;
             }
@@ -46,7 +46,7 @@ void RBTree<T>::fixRemove(Node<T> *src) {
             brother = src->parent->left;
             if (brother->col == Colour::Red) {
                 brother->col = Colour::Black;
-                src->parent = Colour::Red;
+                src->parent->col = Colour::Red;
                 rightRotation(src->parent);
                 brother = src->parent->left;
             }
