@@ -23,6 +23,15 @@ class LinkedList {
             tail = nullptr;
         }
 
+        ~LinkedList() {
+            Node<T> *next;
+            while (head != nullptr) {
+                next = head->next;
+                delete head;
+                head = next;
+            }
+        }
+
         void append(int n) {
             Node<T> *temp = new Node<T>;
             temp->val = n;
