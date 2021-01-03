@@ -1,5 +1,3 @@
-//Red Black Tree
-//A single file, which contains days 105 to 112, as well as driver code to test the tree out.
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -9,66 +7,67 @@ enum class Colour {
     Red
 };
 
-template <typename T>
+template <typename T, typename S>
 struct Node {
-    T data;
+    T key;
+    S value;
     Node *parent;
     Node *left;
     Node *right;
     Colour col;
 };
 
-template <typename T>
-class RBTree {
+template <typename T, typename S>
+class KeyedRBTree {
     protected:
-        Node<T> *root;
-        Node<T> *null;
+        Node<T, S> *root;
+        Node<T, S> *null;
 
-        void leftRotation(Node<T> *src);
-        void rightRotation(Node<T> *src);
-        void recolour(Node<T> *node);
-        void colour(Node<T> *node, Colour newColour);
+        void leftRotation(Node<T, S> *src);
+        void rightRotation(Node<T, S> *src);
+        void recolour(Node<T, S> *node);
+        void colour(Node<T, S> *node, Colour newColour);
 
-        Node<T> *search(T val);
-        Node<T> *minimum(Node<T> *src);
-        void transplant(Node<T> *u, Node<T> *v);
-        void fixInsertion(Node<T> *node);
-        void fixRemove(Node<T> *node);
-        void inOrder(Node<T> *src, vector<T> &ret);
+        Node<T, S> *search(T key);
+        Node<T, S> *minimum(Node<T, S> *src);
+        void transplant(Node<T, S> *u, Node<T, S> *v);
+        void fixInsertion(Node<T, S> *node);
+        void fixRemove(Node<T, S> *node);
+        void inOrder(Node<T, S> *src, vector<pair<T, S>> &ret);
     public:
-        RBTree();
-        ~RBTree();
-        void insert(T val);
-        void remove(T val);
-        bool contains(T val);
-        vector<T> inOrder();
+        KeyedRBTree();
+        ~KeyedRBTree();
+        void insert(T key, S val);
+        void remove(T key);
+        bool contains(T key);
+        vector<pair<T, S>> inOrder();
 };
 
-template <typename T>
-RBTree<T>::RBTree() {
-    null = new Node<T>;
+template <typename T, typename S>
+KeyedRBTree<T, S>::KeyedRBTree() {
+    null = new Node<T, S>;
     null->col = Colour::Black;
     null->left = nullptr;
     null->right = nullptr;
     root = null;
 }
 
-template <typename T>
-void RBTree<T>::recolour(Node<T> *node) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::recolour(Node<T, S> *node) {
     if (node->col == Colour::Black) node->col = Colour::Red;
     else node->col = Colour::Red;
 }
 
-template <typename T>
-void RBTree<T>::colour(Node<T> *node, Colour newColour) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::colour(Node<T, S> *node, Colour newColour) {
     node->col = newColour;
 }
 
-template <typename T>
-void RBTree<T>::leftRotation(Node<T> *src) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::leftRotation(Node<T, S> *src) {
     if (src->right == null) return;
-    Node<T> *x = src;
-    Node<T> *y = src->right;
+    Node<T, S> *x = src;
+    Node<T, S> *y = src->right;
 
     //Make y's left subtree into x's right subtree
     x->right = y->left; 
@@ -87,11 +86,11 @@ void RBTree<T>::leftRotation(Node<T> *src) {
     x->parent = y;
 }
 
-template <typename T>
-void RBTree<T>::rightRotation(Node<T> *src) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::rightRotation(Node<T, S> *src) {
     if (src->left == null) return;
-    Node<T> *x = src;
-    Node<T> *y = src->left;
+    Node<T, S> *x = src;
+    Node<T, S> *y = src->left;
 
     //Make y's right subtree into x's left subtree
     x->left = y->right; 
@@ -110,39 +109,40 @@ void RBTree<T>::rightRotation(Node<T> *src) {
     x->parent = y;
 }
 
-template <typename T>
-Node<T>* RBTree<T>::search(T val) {
-    Node<T> *x = root;
-    Node<T> *y = null;
+template <typename T, typename S>
+Node<T, S>* KeyedRBTree<T, S>::search(T key) {
+    Node<T, S> *x = root;
+    Node<T, S> *y = null;
     while (x != null) {
         y = x;
-        if (val == x->data) return x;
-        else if (val < x->data) x = x->left;
+        if (key == x->key) return x;
+        else if (key < x->key) x = x->left;
         else x = x->right;
     }
     return y;
 }
 
-template <typename T>
-bool RBTree<T>::contains(T val) {
-    Node<T> *res = search(val);
+template <typename T, typename S>
+bool KeyedRBTree<T, S>::contains(T key) {
+    Node<T, S> *res = search(key);
     if (res == null) return false;
-    return search(val)->data == val;
+    return search(key)->key == key;
 }
 
-template <typename T>
-void RBTree<T>::insert(T val) {
-    if (contains(val)) return;
-    Node<T> *y = search(val);
-    Node<T> *z = new Node<T>;
+template <typename T, typename S>
+void KeyedRBTree<T, S>::insert(T key, S val) {
+    if (contains(key)) return;
+    Node<T, S> *y = search(key);
+    Node<T, S> *z = new Node<T, S>;
 
     //Set z as a child of y
     if (y == null) root = z;
-    else if (val < y->data) y->left = z;
+    else if (key < y->key) y->left = z;
     else y->right = z;
 
     //Complete initialization of z
-    z->data = val;
+    z->key = key;
+    z->value = val;
     z->parent = y;
     z->left = null;
     z->right = null;
@@ -150,9 +150,9 @@ void RBTree<T>::insert(T val) {
     fixInsertion(z);
 }
 
-template <typename T>
-void RBTree<T>::fixInsertion(Node<T> *src) {
-    Node<T> *uncle;
+template <typename T, typename S>
+void KeyedRBTree<T, S>::fixInsertion(Node<T, S> *src) {
+    Node<T, S> *uncle;
     while (src->parent->col == Colour::Red) {
         //Case A: the parent of src is a left children
         if (src->parent->parent->left == src->parent) {
@@ -208,8 +208,8 @@ void RBTree<T>::fixInsertion(Node<T> *src) {
     root->col = Colour::Black;
 }
 
-template <typename T>
-void RBTree<T>::transplant(Node<T> *u, Node<T> *v) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::transplant(Node<T, S> *u, Node<T, S> *v) {
     if (u->parent == nullptr || u->parent == null) {
         root = v;
     }
@@ -222,17 +222,17 @@ void RBTree<T>::transplant(Node<T> *u, Node<T> *v) {
     v->parent = u->parent;
 }
 
-template <typename T>
-Node<T> *RBTree<T>::minimum(Node<T> *src) {
+template <typename T, typename S>
+Node<T, S> *KeyedRBTree<T, S>::minimum(Node<T, S> *src) {
     while (src->left != null) src = src->left;
     return src;
 }
 
-template <typename T>
-void RBTree<T>::remove(T val) {
-    if (!contains(val)) return;
-    Node<T> *z = search(val);
-    Node<T> *x, *y = z;
+template <typename T, typename S>
+void KeyedRBTree<T, S>::remove(T key) {
+    if (!contains(key)) return;
+    Node<T, S> *z = search(key);
+    Node<T, S> *x, *y = z;
     Colour y_original_colour = y->col;
 
     if (z->left == null) {
@@ -269,9 +269,9 @@ void RBTree<T>::remove(T val) {
     delete z;
 }
 
-template <typename T>
-void RBTree<T>::fixRemove(Node<T> *src) {
-    Node<T> *brother;
+template <typename T, typename S>
+void KeyedRBTree<T, S>::fixRemove(Node<T, S> *src) {
+    Node<T, S> *brother;
     while (src != root && src->col == Colour::Black) {
         //Case A: src is a left children
         if (src == src->parent->left) {
@@ -338,12 +338,12 @@ void RBTree<T>::fixRemove(Node<T> *src) {
     src->col = Colour::Black;
 }
 
-template <typename T>
-RBTree<T>::~RBTree() {
-    stack<Node<T>*> s;
+template <typename T, typename S>
+KeyedRBTree<T, S>::~KeyedRBTree() {
+    stack<Node<T, S>*> s;
     s.push(root);
     while (!s.empty()) {
-        Node<T> *curr = s.top();
+        Node<T, S> *curr = s.top();
         s.pop();
         if (curr->left != null) s.push(curr->left);
         if (curr->right != null) s.push(curr->right);
@@ -352,48 +352,17 @@ RBTree<T>::~RBTree() {
     delete null;
 }
 
-template <typename T>
-vector<T> RBTree<T>::inOrder() {
+template <typename T, typename S>
+vector<pair<T, S>> KeyedRBTree<T, S>::inOrder() {
     vector<T> ret;
     inOrder(root, ret);
     return ret;
 }
 
-template <typename T>
-void RBTree<T>::inOrder(Node<T> *src, vector<T> &ret) {
+template <typename T, typename S>
+void KeyedRBTree<T, S>::inOrder(Node<T, S> *src, vector<pair<T, S>> &ret) {
     if (src == null) return;
     inOrder(src->left, ret);
-    ret.push_back(src->data);
+    ret.push_back({src->key, src->value});
     inOrder(src->right, ret);
 }
-
-/* Driver test code
-int main() {
-    RBTree<int> tree;
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        int temp;
-        cin >> temp;
-        tree.insert(temp);
-    }
-
-    for (auto a : tree.inOrder()) {
-        cout << a << ' ';
-    }
-    cout << '\n';
-
-    int m;
-    cin >> m;
-    for (int i = 0; i < m; i++) {
-        int temp;
-        cin >> temp;
-        tree.remove(temp);
-    }
-
-    for (auto a : tree.inOrder()) {
-        cout << a << ' ';
-    }
-    cout << '\n';
-}
-*/
