@@ -7,7 +7,7 @@
 template <typename T, typename S>
 class MultiMap : public KeyedRBTree<T, vector<S>> {
     public:
-        void insert(T key, S value) override {
+        void insert(T key, S value) {
             if (contains(key)) {
                 search(key)->value.push_back(value);
             }
