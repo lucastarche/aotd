@@ -1,4 +1,4 @@
-//Coctail Shaker Sort
+//Cocktail Shaker Sort
 //A constant time improvement over bubble sort, but that still pales with large arrays.
 //Despite being (on average) twice as fast as bubble sort, it still runs in quadratic time.
 //Runtime: O(n^2)
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void CoctailShakerSort(vector<int> &arr) {
+void CocktailShakerSort(vector<int> &arr) {
     int n = (int)arr.size();
     bool swapped = true;
     while (swapped) {
@@ -35,7 +35,7 @@ int main() {
     vector<int> arr(n, 0);
     for (int i = 0; i < n; i++) cin >> arr[i];
 
-    CoctailShakerSort(arr);
+    CocktailShakerSort(arr);
 
     for (auto a : arr) cout << a << ' ';
     cout << '\n';
