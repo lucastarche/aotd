@@ -37,7 +37,8 @@ int main() {
 
     char target, replacement;
     int x, y;
-    cin >> target >> replacement >> x >> y;
+    cin >> replacement >> x >> y;
+    target = mat[x][y];
 
     FloodFill(mat, target, replacement, x, y);
     for (auto line : mat) {
