@@ -48,4 +48,9 @@ class BigInteger {
         BigInteger operator<=(BigInteger other);
         BigInteger operator>(BigInteger other);
         BigInteger operator>=(BigInteger other);
+
+        string toString() {
+            if (isNegative) return '-' + numStr;
+            return numStr;
+        }
 };
