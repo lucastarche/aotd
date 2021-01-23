@@ -2,6 +2,7 @@
 //This algorithms aren't hard to implement, but maybe a bit tedious because of all the string operations we have to do.
 //These are implemented similar to how we add and subtract when we are in primary school, but generalized to computers.
 //Runtime: O(n), where n is the length of the string, or equivalently, O(log m), where m is the integer.
+//Note: The "-'0'" part is to convert from a character to a number.
 #include "132-BigInteger.cpp"
 
 //Unary minus
