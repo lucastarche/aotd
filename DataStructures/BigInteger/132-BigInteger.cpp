@@ -43,11 +43,11 @@ class BigInteger {
         BigInteger operator%(BigInteger other);
 
         //Number Comparisons
-        BigInteger operator==(BigInteger other);
-        BigInteger operator<(BigInteger other);
-        BigInteger operator<=(BigInteger other);
-        BigInteger operator>(BigInteger other);
-        BigInteger operator>=(BigInteger other);
+        bool operator==(BigInteger other);
+        bool operator<(BigInteger other);
+        bool operator<=(BigInteger other);
+        bool operator>(BigInteger other);
+        bool operator>=(BigInteger other);
 
         string toString() {
             if (isNegative) return '-' + numStr;
