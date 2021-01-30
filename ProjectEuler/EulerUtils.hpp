@@ -25,3 +25,22 @@ bool is_palindrome(string str) {
 bool is_palindrome(long long n) {
     return is_palindrome(to_string(n));
 }
+
+vector<long long> primes_up_to(long long n) {
+    vector<long long> primes = {2};
+
+    for (long long i = 3; i <= n; i += 2) {
+        bool isPrime = true;
+        for (auto p : primes) {
+            if (i % p == 0) {
+                isPrime = false;
+                break;
+            }
+            if (p * p > i) break;
+        }
+
+        if (isPrime) primes.push_back(i);
+    }
+
+    return primes;
+}
