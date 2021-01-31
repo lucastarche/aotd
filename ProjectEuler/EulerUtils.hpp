@@ -44,3 +44,11 @@ vector<long long> primes_up_to(long long n) {
 
     return primes;
 }
+
+long long range_sum(long long n) {
+    return (n * (n + 1)) / 2LL;
+}
+
+long long range_sum(long long a, long long b) {
+    return range_sum(b) - range_sum(a);
+}
