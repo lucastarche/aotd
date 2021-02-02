@@ -52,3 +52,21 @@ long long range_sum(long long n) {
 long long range_sum(long long a, long long b) {
     return range_sum(b) - range_sum(a);
 }
+
+vector<long long> first_n_primes(long long n) {
+    vector<long long> primes = {2};
+    int curr = 3;
+    while (primes.size() < n) {
+        bool isPrime = true;
+        for (auto p : primes) {
+             if (curr % p == 0) {
+                 isPrime = false;
+                 break;
+             }
+             if (p * p > curr) break;
+        }
+        if (isPrime) primes.push_back(curr);
+        curr += 2;
+    }
+    return primes;
+}
