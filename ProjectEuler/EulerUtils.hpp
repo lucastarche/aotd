@@ -18,7 +18,7 @@ set<long long> prime_factors(long long n) {
 
 bool is_palindrome(string str) {
     string copy;
-    reverse_copy(str.begin(), str.end(), copy);
+    reverse_copy(str.begin(), str.end(), copy.begin());
     return str == copy;
 }
 
@@ -46,7 +46,7 @@ vector<long long> primes_up_to(long long n) {
 }
 
 long long range_sum(long long n) {
-    return (n * (n + 1)) / 2LL;
+    return (n * (n + 1LL)) / 2LL;
 }
 
 long long range_sum(long long a, long long b) {
@@ -54,19 +54,19 @@ long long range_sum(long long a, long long b) {
 }
 
 vector<long long> first_n_primes(long long n) {
-    vector<long long> primes = {2};
-    int curr = 3;
+    vector<long long> primes = {2LL};
+    long long curr = 3LL;
     while (primes.size() < n) {
         bool isPrime = true;
         for (auto p : primes) {
-             if (curr % p == 0) {
+             if (curr % p == 0LL) {
                  isPrime = false;
                  break;
              }
              if (p * p > curr) break;
         }
         if (isPrime) primes.push_back(curr);
-        curr += 2;
+        curr += 2LL;
     }
     return primes;
 }
