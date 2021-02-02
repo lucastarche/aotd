@@ -11,7 +11,7 @@ long long solve() {
     long long a = sum * sum;
     long long b = 0;
     
-    for (int i = 1; i <= 100; i++) {
+    for (long long i = 1; i <= 100; i++) {
         b += i * i;
     }
 
