@@ -70,3 +70,18 @@ vector<long long> first_n_primes(long long n) {
     }
     return primes;
 }
+
+vector<bool> prime_sieve(long long n) {
+    vector<bool> sieve(n + 1, true);
+    sieve[0] = false;
+    sieve[1] = false;
+    
+    for (long long i = 2; i <= n; i++) {
+        if (!sieve[i]) continue;
+        for (long long j = 2 * i; j <= n; j += i) {
+            sieve[j] = false;
+        }
+    }
+
+    return sieve;
+}
