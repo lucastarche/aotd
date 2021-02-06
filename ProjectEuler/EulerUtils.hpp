@@ -85,3 +85,16 @@ vector<bool> prime_sieve(long long n) {
 
     return sieve;
 }
+
+vector<long long> divisor_sieve(long long n) {
+    vector<long long> sieve(n + 1, 1);
+    sieve[0] = 0;
+    
+    for (long long i = 2; i <= n; i++) {
+        for (long long j = i; j <= n; j += i) {
+            sieve[j]++;
+        }
+    }
+    
+    return sieve;
+}
