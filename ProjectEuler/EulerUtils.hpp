@@ -27,7 +27,7 @@ bool is_palindrome(long long n) {
 }
 
 vector<long long> primes_up_to(long long n) {
-    vector<long long> primes = {2};
+    vector<long long> primes = {2LL};
 
     for (long long i = 3; i <= n; i += 2) {
         bool isPrime = true;
@@ -97,4 +97,23 @@ vector<long long> divisor_sieve(long long n) {
     }
     
     return sieve;
+}
+
+vector<long long> divisors(long long n) {
+    vector<long long> res;
+    for (long long i = 1; i * i <= n; i++) {
+        if (n % i == 0) {
+            res.push_back(i);
+            if (i != (long long)(n / i)) {
+                res.push_back(n / i);
+            }
+        }
+    }
+    return res;
+}
+
+long long accumulate(vector<long long> nums) {
+    long long ans = 0LL;
+    for (auto n : nums) ans += n;
+    return ans;
 }
