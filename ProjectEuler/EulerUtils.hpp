@@ -117,3 +117,11 @@ long long accumulate(vector<long long> nums) {
     for (auto n : nums) ans += n;
     return ans;
 }
+
+long long factorial(long long n) {
+    long long ans = 1LL;
+    for (long long i = 1; i <= n; i++) {
+        ans *= i;
+    }
+    return ans;
+}
