@@ -18,6 +18,7 @@ set<long long> prime_factors(long long n) {
 
 bool is_palindrome(string str) {
     string copy;
+    copy.resize(str.size());
     reverse_copy(str.begin(), str.end(), copy.begin());
     return str == copy;
 }
@@ -76,9 +77,9 @@ vector<bool> prime_sieve(long long n) {
     sieve[0] = false;
     sieve[1] = false;
     
-    for (long long i = 2; i <= n; i++) {
+    for (long long i = 2LL; i <= n; i++) {
         if (!sieve[i]) continue;
-        for (long long j = 2 * i; j <= n; j += i) {
+        for (long long j = 2LL * i; j <= n; j += i) {
             sieve[j] = false;
         }
     }
@@ -123,5 +124,15 @@ long long factorial(long long n) {
     for (long long i = 1; i <= n; i++) {
         ans *= i;
     }
+    return ans;
+}
+
+string to_binary_string(long long n) {
+    string ans = "";
+    while (n > 0) {
+        ans += '0' + n % 2LL;
+        n /= 2LL;
+    }
+    reverse(ans.begin(), ans.end());
     return ans;
 }
