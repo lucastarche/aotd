@@ -1,4 +1,4 @@
-//PE 53: Combinatronic selections
+//PE 53: Combinatoric selections
 //Problem: Find all combinatorial numbers (n, r) such that 1 <= n <= 100, and are greater than one million.
 //Solution: We can modify Pascal's triangle with a sentinel value for when the number exceeds one million, and then count how many times it appears.
 //Runtime: O(n^2)
