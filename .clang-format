@@ -7,7 +7,7 @@ AlignTrailingComments: true
 BreakBeforeInheritanceComma: true
 BreakConstructorInitializers: BeforeComma
 IndentPPDirectives: AfterHash
-BreakBeforeBraces: Custom
+BreakBeforeBraces: Attach
 BraceWrapping:
     AfterFunction: false
 NamespaceIndentation: None

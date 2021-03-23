@@ -15,8 +15,10 @@ long long solve() {
             long long n = 0LL;
             while (true) {
                 long long fn = n * n + a * n + b;
-                if (fn < 0) break;
-                if (!sieve[fn]) break;
+                if (fn < 0)
+                    break;
+                if (!sieve[fn])
+                    break;
                 n++;
             }
 
@@ -33,4 +35,3 @@ long long solve() {
 int main() {
     cout << solve() << '\n';
 }
-

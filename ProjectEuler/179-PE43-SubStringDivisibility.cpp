@@ -9,15 +9,17 @@
 long long solve() {
     string s = "1023456789";
     long long ans = 0LL;
-    vector<int> divisors = {1, 2, 3, 5, 7, 11, 13, 17};
+    vector<int> divisors = { 1, 2, 3, 5, 7, 11, 13, 17 };
     do {
         bool possible = true;
 
         for (int i = 0; i < (int)divisors.size(); i++) {
-            if (stoll(s.substr(i, 3)) % divisors[i] != 0) possible = false;
+            if (stoll(s.substr(i, 3)) % divisors[i] != 0)
+                possible = false;
         }
 
-        if (possible) ans += stoll(s);
+        if (possible)
+            ans += stoll(s);
     } while (next_permutation(s.begin(), s.end()));
     return ans;
 }

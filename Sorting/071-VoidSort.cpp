@@ -10,7 +10,7 @@ vector<int> VoidSort(vector<int> args) {
     return {};
 }
 
-void VoidSortInplace(vector<int> &args) {
+void VoidSortInplace(vector<int>& args) {
     args.resize(0);
 }
 
@@ -25,11 +25,13 @@ int main() {
     auto ans = VoidSort(arr);
 
     cout << "Sorted array: ";
-    for (auto a : ans) cout << a << " ";
+    for (auto a : ans)
+        cout << a << " ";
     cout << '\n';
 
     VoidSortInplace(arr);
 
-    for (auto a : arr) cout << a << " ";
+    for (auto a : arr)
+        cout << a << " ";
     cout << '\n';
 }

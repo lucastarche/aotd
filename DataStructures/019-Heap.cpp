@@ -7,72 +7,76 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 class Heap {
-    private:
-        vector<T> tree;
-        int size;
+private:
+    vector<T> tree;
+    int size;
 
-        int getLeft(int i) {
-            if (i * 2 <= size) return i * 2;
+    int getLeft(int i) {
+        if (i * 2 <= size)
+            return i * 2;
+        return -1;
+    }
+
+    int getRight(int i) {
+        if (i * 2 + 1 <= size)
+            return i * 2 + 1;
+        return -1;
+    }
+
+    int getParent(int i) {
+        if (i == 1)
             return -1;
+        return i / 2;
+    }
+
+    void MinHeapify(int i) {
+        int left = getLeft(i);
+        int right = getRight(i);
+        int smallest = i;
+
+        if (left != -1 && tree[left] < tree[smallest]) {
+            smallest = left;
+        }
+        if (right != -1 && tree[right] < tree[smallest]) {
+            smallest = right;
         }
 
-        int getRight(int i) {
-            if (i * 2 + 1 <= size) return i * 2 + 1;
-            return -1;
+        if (smallest != i) {
+            swap(tree[i], tree[smallest]);
+            MinHeapify(smallest);
         }
+    }
 
-        int getParent(int i) {
-            if (i == 1) return -1;
-            return i / 2;
+public:
+    Heap() {
+        tree.resize(1);
+        size = 0;
+    }
+
+    void push(T val) {
+        tree.push_back(val);
+        size++;
+        int curr = size;
+        while (getParent(curr) != -1 && tree[curr] < tree[getParent(curr)]) {
+            swap(tree[curr], tree[getParent(curr)]);
+            curr = getParent(curr);
         }
+    }
 
-        void MinHeapify(int i) {
-            int left = getLeft(i);
-            int right = getRight(i);
-            int smallest = i;
+    T extract() {
+        T ans = tree[1];
+        tree[1] = tree[size];
+        tree.pop_back();
+        size--;
+        MinHeapify(1);
+        return ans;
+    }
 
-            if (left != -1 && tree[left] < tree[smallest]) {
-                smallest = left;
-            }
-            if (right != -1 && tree[right] < tree[smallest]) {
-                smallest = right;
-            }
-
-            if (smallest != i) {
-                swap(tree[i], tree[smallest]);
-                MinHeapify(smallest);
-            }
-        }
-    public:
-        Heap() {
-            tree.resize(1);
-            size = 0;
-        }
-
-        void push(T val) {
-            tree.push_back(val);
-            size++;
-            int curr = size;
-            while (getParent(curr) != -1 && tree[curr] < tree[getParent(curr)]) {
-                swap(tree[curr], tree[getParent(curr)]);
-                curr = getParent(curr);
-            }
-        }
-
-        T extract() {
-            T ans = tree[1];
-            tree[1] = tree[size];
-            tree.pop_back();
-            size--;
-            MinHeapify(1);
-            return ans;
-        }
-
-        bool empty() {
-            return !size;
-        }
+    bool empty() {
+        return !size;
+    }
 };
 
 int main() {

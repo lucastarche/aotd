@@ -37,7 +37,7 @@ IntMatrix MatrixExponentiation(IntMatrix mat, int n, int mod) {
 }
 
 int FibonacciFast(int n, int mod) {
-    IntMatrix recurrence = {{0, 1}, {1, 1}};
+    IntMatrix recurrence = { { 0, 1 }, { 1, 1 } };
     IntMatrix ans = MatrixExponentiation(recurrence, n, mod);
     return ans[1][1];
 }

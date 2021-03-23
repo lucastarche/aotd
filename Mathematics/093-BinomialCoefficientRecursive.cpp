@@ -8,7 +8,8 @@
 using namespace std;
 
 int BinomialCoefficient(int n, int k) {
-    if (k == 0 || n == k) return 1;
+    if (k == 0 || n == k)
+        return 1;
     return BinomialCoefficient(n - 1, k - 1) + BinomialCoefficient(n - 1, k);
 }
 

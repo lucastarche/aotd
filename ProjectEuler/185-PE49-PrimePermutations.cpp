@@ -8,11 +8,14 @@
 long long solve() {
     vector<bool> sieve = prime_sieve(10000LL);
     for (long long i = 1001LL; i < 10000LL; i += 2LL) {
-        if (!sieve[i] || i == 1487) continue;
+        if (!sieve[i] || i == 1487)
+            continue;
         for (long long j = 1LL; j < 10000LL; j++) {
             long long b = i + j, c = i + 2LL * j;
-            if (c >= 10000LL) break;
-            if (!sieve[b] || !sieve[c]) continue;
+            if (c >= 10000LL)
+                break;
+            if (!sieve[b] || !sieve[c])
+                continue;
             string a_s = to_string(i), b_s = to_string(b), c_s = to_string(c);
             sort(a_s.begin(), a_s.end());
             sort(b_s.begin(), b_s.end());

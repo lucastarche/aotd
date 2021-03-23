@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void merge(vector<int> &v, int a, int mid, int b) {
+void merge(vector<int>& v, int a, int mid, int b) {
     vector<int> bufA, bufB;
     int aSize = 0, bSize = 0;
     for (int i = a; i <= mid; i++) {
@@ -17,7 +17,7 @@ void merge(vector<int> &v, int a, int mid, int b) {
     }
     for (int i = mid + 1; i <= b; i++) {
         bufB.push_back(v
-[i]);
+                [i]);
         bSize++;
     }
     int aInd = 0, bInd = 0, i = a;
@@ -25,8 +25,7 @@ void merge(vector<int> &v, int a, int mid, int b) {
         if (bufA[aInd] <= bufB[bInd]) {
             v[i] = bufA[aInd];
             aInd++;
-        }
-        else {
+        } else {
             v[i] = bufB[bInd];
             bInd++;
         }
@@ -45,8 +44,9 @@ void merge(vector<int> &v, int a, int mid, int b) {
     }
 }
 
-void MergeSort(vector<int> &v, int a, int b) {
-    if (b <= a) return;
+void MergeSort(vector<int>& v, int a, int b) {
+    if (b <= a)
+        return;
     int mid = (int)((a + b) / 2);
     MergeSort(v, a, mid);
     MergeSort(v, mid + 1, b);
@@ -57,9 +57,11 @@ int main() {
     int n;
     cin >> n;
     vector<int> elements(n);
-    for (int i = 0; i < n; i++) cin >> elements[i];
+    for (int i = 0; i < n; i++)
+        cin >> elements[i];
     MergeSort(elements, 0, n - 1);
     cout << "Sorted Array:\n";
-    for (auto a : elements) cout << a << " ";
+    for (auto a : elements)
+        cout << a << " ";
     cout << '\n';
 }

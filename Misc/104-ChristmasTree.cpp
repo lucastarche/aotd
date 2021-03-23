@@ -7,7 +7,7 @@ using namespace std;
 
 void ChristmasTree(int levels) {
     string separator = "", branches = "*";
-    for (int i = 0; i < levels; i++) 
+    for (int i = 0; i < levels; i++)
         separator += " ";
 
     for (int i = 0; i < levels; i++) {
@@ -16,7 +16,8 @@ void ChristmasTree(int levels) {
         branches += "**";
     }
 
-    for (int i = 0; i < levels; i++) cout << ' ';
+    for (int i = 0; i < levels; i++)
+        cout << ' ';
     cout << "|\n";
 }
 

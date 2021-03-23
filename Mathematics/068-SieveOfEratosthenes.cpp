@@ -11,8 +11,9 @@ vector<bool> Sieve(int n) {
     ans[0] = false;
     ans[1] = false;
     for (int x = 2; x <= n; x++) {
-        if (!ans[x]) continue;
-        for (int i = 2*x; i <= n; i++) {
+        if (!ans[x])
+            continue;
+        for (int i = 2 * x; i <= n; i++) {
             ans[i] = false;
         }
     }
@@ -30,8 +31,11 @@ int main() {
     for (int i = 0; i < q; i++) {
         int num;
         cin >> num;
-        if (num > n) cout << "Num out of range" << '\n';
-        else if (ans[num]) cout << num << " is a prime" << '\n';
-        else cout << num << " is not a prime" << '\n';
+        if (num > n)
+            cout << "Num out of range" << '\n';
+        else if (ans[num])
+            cout << num << " is a prime" << '\n';
+        else
+            cout << num << " is not a prime" << '\n';
     }
 }

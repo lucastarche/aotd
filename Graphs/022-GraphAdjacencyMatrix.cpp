@@ -6,26 +6,28 @@
 using namespace std;
 
 class GraphAM {
-    private:
-        vector<vector<bool>> matrix;
-    public:
-        GraphAM(int n) {
-            matrix.resize(n + 1, vector<bool>(n + 1, false));
-            for (int i = 1; i <= n; i++) matrix[i][i] = true;
-        }
+private:
+    vector<vector<bool>> matrix;
 
-        void addEdge(int a, int b) {
-            matrix[a][b] = true;
-            matrix[b][a] = true;
-        }
+public:
+    GraphAM(int n) {
+        matrix.resize(n + 1, vector<bool>(n + 1, false));
+        for (int i = 1; i <= n; i++)
+            matrix[i][i] = true;
+    }
 
-        void addDirectedEdge(int from, int to) {
-            matrix[from][to] = true;
-        }
+    void addEdge(int a, int b) {
+        matrix[a][b] = true;
+        matrix[b][a] = true;
+    }
 
-        bool connected(int from, int to) {
-            return matrix[from][to];
-        }
+    void addDirectedEdge(int from, int to) {
+        matrix[from][to] = true;
+    }
+
+    bool connected(int from, int to) {
+        return matrix[from][to];
+    }
 };
 
 int main() {
@@ -45,8 +47,7 @@ int main() {
         cin >> from >> to;
         if (graph.connected(from, to)) {
             cout << from << " is connected to " << to << '\n';
-        }
-        else {
+        } else {
             cout << from << " is not connected to " << to << '\n';
         }
     }

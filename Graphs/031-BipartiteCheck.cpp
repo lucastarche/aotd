@@ -4,7 +4,7 @@
 //It runs in the same time that BFS, that is, O(n + m) with adjacency list, and O(n^2) with adjacency matrix.
 #include "GraphAL.cpp"
 
-bool BipartiteCheck(GraphAL &g) {
+bool BipartiteCheck(GraphAL& g) {
     bool isBipartite = true;
     int n = g.getSize();
     vector<int> color(n + 1, 0);
@@ -16,7 +16,8 @@ bool BipartiteCheck(GraphAL &g) {
     while (!q.empty()) {
         int curr = q.front();
         q.pop();
-        if (visited[curr]) continue;
+        if (visited[curr])
+            continue;
         visited[curr] = true;
 
         for (auto node : g.getNeighbours(curr)) {
@@ -46,8 +47,7 @@ int main() {
 
     if (BipartiteCheck(graph)) {
         cout << "The graph is bipartite" << '\n';
-    }
-    else {
+    } else {
         cout << "The graph is not bipartite" << '\n';
     }
 }

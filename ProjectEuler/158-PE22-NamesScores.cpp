@@ -29,16 +29,16 @@ int main() {
     ifstream in("input-022.txt");
     in >> buf;
     for (auto c : buf) {
-        switch(c) {
-            case '"': 
-                if (curr != "") {
-                    names.push_back(curr);
-                    curr = "";
-                }
-            case ',':
-                break;
-            default:
-                curr += c;
+        switch (c) {
+        case '"':
+            if (curr != "") {
+                names.push_back(curr);
+                curr = "";
+            }
+        case ',':
+            break;
+        default:
+            curr += c;
         }
     }
 

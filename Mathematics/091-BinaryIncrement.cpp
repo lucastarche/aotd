@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void binaryIncrement(vector<int> &bits) {
+void binaryIncrement(vector<int>& bits) {
     int carry = true;
     for (int i = (int)bits.size() - 1; i >= 0; i--) {
         int temp = bits[i] ^ carry;
@@ -20,10 +20,12 @@ int main() {
     cin >> n;
 
     vector<int> bits(n);
-    for (int i = 0; i < n; i++) cin >> bits[i];
-    
+    for (int i = 0; i < n; i++)
+        cin >> bits[i];
+
     binaryIncrement(bits);
-    
-    for (int i = 0; i < n; i++) cout << bits[i] << " ";
+
+    for (int i = 0; i < n; i++)
+        cout << bits[i] << " ";
     cout << '\n';
 }

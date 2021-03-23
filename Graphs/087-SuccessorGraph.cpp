@@ -7,25 +7,28 @@
 using namespace std;
 
 class SuccessorGraph {
-    private:
-        vector<int> next;
-    public:
-        SuccessorGraph(vector<int> next) : next{next} { }
+private:
+    vector<int> next;
 
-        int succ(int x) {
-            return next[x];
-        }
+public:
+    SuccessorGraph(vector<int> next)
+        : next { next } { }
 
-        int size() {
-            return (int)next.size();
-        }
+    int succ(int x) {
+        return next[x];
+    }
+
+    int size() {
+        return (int)next.size();
+    }
 };
 
 int main() {
     int n;
     cin >> n;
     vector<int> next(n);
-    for (int i = 0; i < n; i++) cin >> next[i];
+    for (int i = 0; i < n; i++)
+        cin >> next[i];
 
     SuccessorGraph g(next);
 

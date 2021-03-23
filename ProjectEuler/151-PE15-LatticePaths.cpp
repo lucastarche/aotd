@@ -10,11 +10,13 @@
 long long solve() {
     vector<vector<long long>> ways(21, vector<int>(21, 0LL));
     ways[0][0] = 1LL;
-    for (int i = 1; i <= 20; i++) ways[i][0] = 1LL;
-    for (int j = 1; j <= 20; j++) ways[0][j] = 1LL;
+    for (int i = 1; i <= 20; i++)
+        ways[i][0] = 1LL;
+    for (int j = 1; j <= 20; j++)
+        ways[0][j] = 1LL;
 
-    for (int i = 1; i <= 20; i++) 
-        for (int j = 1; j <= 20; j++) 
+    for (int i = 1; i <= 20; i++)
+        for (int j = 1; j <= 20; j++)
             ways[i][j] = ways[i - 1][j] + ways[i][j - 1];
 
     return ways[20][20];

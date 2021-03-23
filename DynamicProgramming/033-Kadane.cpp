@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int Kadane(vector<int> &v) {
+int Kadane(vector<int>& v) {
     int current = 0, ans = 0;
     for (int i = 0; i < (int)v.size(); i++) {
         current += v[i];
@@ -21,7 +21,8 @@ int main() {
     int n;
     cin >> n;
     vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
 
     int ans = Kadane(arr);
     cout << "The maximum subarray sum of the array is: " << ans << '\n';

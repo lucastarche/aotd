@@ -7,31 +7,32 @@
 using namespace std;
 
 class Tree {
-    private:
-        int n;
-        vector<int> parents;
-        vector<vector<int>> children;
-    public:
-        Tree() {
-            parents.resize(1, 0);
-            children.resize(1);
-            n = 1;
-        }
+private:
+    int n;
+    vector<int> parents;
+    vector<vector<int>> children;
 
-        void insert(int parent) {
-            parents.push_back(parent);
-            children.push_back({});
-            children[parent].push_back(n);
-            n++;
-        }
+public:
+    Tree() {
+        parents.resize(1, 0);
+        children.resize(1);
+        n = 1;
+    }
 
-        int RootedLongestPath(int start) {
-            int ans = 0;
-            for (auto child : children[start]) {
-                ans = max(ans, RootedLongestPath(child) + 1);
-            }
-            return ans;
+    void insert(int parent) {
+        parents.push_back(parent);
+        children.push_back({});
+        children[parent].push_back(n);
+        n++;
+    }
+
+    int RootedLongestPath(int start) {
+        int ans = 0;
+        for (auto child : children[start]) {
+            ans = max(ans, RootedLongestPath(child) + 1);
         }
+        return ans;
+    }
 };
 
 int main() {

@@ -27,7 +27,8 @@ long long solve() {
 
     long long ans = 0LL;
     for (long long i = 10LL; i <= upper; i++) {
-        if (i == digitFactorial(i)) ans += i;
+        if (i == digitFactorial(i))
+            ans += i;
     }
     return ans;
 }

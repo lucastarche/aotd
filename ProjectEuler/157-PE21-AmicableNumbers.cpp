@@ -10,9 +10,11 @@ long long solve() {
 
     for (long long i = 1; i <= 10000; i++) {
         long long j = accumulate(divisors(i)) - i;
-        if (i == j) continue;
+        if (i == j)
+            continue;
         long long k = accumulate(divisors(j)) - j;
-        if (i == k) ans += i;
+        if (i == k)
+            ans += i;
     }
 
     return ans;

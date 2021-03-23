@@ -1,6 +1,6 @@
 //PE 28: Number Spiral Diagonals
 //Problem: Find the sum of the diagonals in the clockwise spiral of size 1001x1001
-//Solution: We can see a pattern for each "layer" of the spiral, in that the numbers are 
+//Solution: We can see a pattern for each "layer" of the spiral, in that the numbers are
 //lastSquare + (i - 1), lastSquare + 2 * (i - 1), lastSquare + 3 * (i - 1), and lastSquare + 4 * (i - 1).
 //Then we just code it up and add all these numbers together.
 //Runtime: O(n), where n is the length of the grid (in this case, 1001)

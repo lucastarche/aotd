@@ -4,26 +4,26 @@
 //Runtime: O(log n) insertion and deletion.
 #include "RedBlackTree/KeyRedBlackTree.cpp"
 
-template <typename T, typename S>
+template<typename T, typename S>
 class MultiMap : public KeyedRBTree<T, vector<S>> {
-    public:
-        void insert(T key, S value) {
-            if (contains(key)) {
-                search(key)->value.push_back(value);
-            }
-            else KeyedRBTree<T, vector<S>>::insert(key, {value});
-        }
+public:
+    void insert(T key, S value) {
+        if (contains(key)) {
+            search(key)->value.push_back(value);
+        } else
+            KeyedRBTree<T, vector<S>>::insert(key, { value });
+    }
 
-        int count(T key) {
-            if (contains(key)) {
-                return search(key)->value.size();
-            }
-            return 0;
+    int count(T key) {
+        if (contains(key)) {
+            return search(key)->value.size();
         }
+        return 0;
+    }
 
-        vector<S> get(T key) {
-            return KeyedRBTree<T, vector<S>>::search(key)->value;
-        }
+    vector<S> get(T key) {
+        return KeyedRBTree<T, vector<S>>::search(key)->value;
+    }
 };
 
 int main() {

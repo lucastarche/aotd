@@ -30,6 +30,8 @@ int main() {
     cin >> a >> b;
     int hashA = PolynomialHash(a);
     int hashB = PolynomialHash(b);
-    if (hashA == hashB) cout << a << " is equal to " << b << '\n';
-    else cout << a << " is not equal to " << b << '\n';
+    if (hashA == hashB)
+        cout << a << " is equal to " << b << '\n';
+    else
+        cout << a << " is not equal to " << b << '\n';
 }

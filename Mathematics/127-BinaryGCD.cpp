@@ -7,24 +7,26 @@
 using namespace std;
 
 int BinaryGCD(int a, int b) {
-    if (a == b) return a;
-    else if (a == 0) return b;
-    else if (b == 0) return a;
+    if (a == b)
+        return a;
+    else if (a == 0)
+        return b;
+    else if (b == 0)
+        return a;
 
     if (a & 1) { //We can use this bittrick instead of using the modulo operator to get if a is odd.
-        if (!(b & 1)) 
+        if (!(b & 1))
             return BinaryGCD(a, b >> 1); //Same as BinaryGCD(a, b / 2)
-        else if (a > b) 
+        else if (a > b)
             return BinaryGCD((a - b) >> 1, b);
         else
             return BinaryGCD((b - a) >> 1, a);
-    }
-    else {
-        if (b & 1) 
+    } else {
+        if (b & 1)
             return BinaryGCD(a >> 1, b);
-        else 
+        else
             return BinaryGCD(a >> 1, b >> 1) << 1;
-            //Same as 2 * BinaryGCD(a / 2, b / 2)
+        //Same as 2 * BinaryGCD(a / 2, b / 2)
     }
 }
 

@@ -13,7 +13,8 @@ long long solve() {
         long long temp = f1;
         f1 = f1 + f2;
         f2 = temp;
-        if (f1 % 2 == 0) ans += f1;
+        if (f1 % 2 == 0)
+            ans += f1;
     }
 
     return ans;

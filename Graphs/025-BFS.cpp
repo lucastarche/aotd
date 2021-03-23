@@ -6,7 +6,7 @@
 
 const int INF = 1e9;
 
-vector<int> BFS(GraphAL &g, int start) {
+vector<int> BFS(GraphAL& g, int start) {
     queue<int> q;
     vector<int> dist(g.getSize() + 1, -1);
     vector<bool> visited(g.getSize() + 1);
@@ -19,7 +19,8 @@ vector<int> BFS(GraphAL &g, int start) {
         visited[curr] = true;
 
         for (auto node : g.getNeighbours(curr)) {
-            if (visited[node]) continue;
+            if (visited[node])
+                continue;
             q.push(node);
             dist[node] = dist[curr] + 1;
         }
@@ -44,8 +45,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (ans[i] != -1) {
             cout << i << " is " << ans[i] << " away from " << source << '\n';
-        }
-        else cout << i << " is not reachable from " << source << '\n';
+        } else
+            cout << i << " is not reachable from " << source << '\n';
     }
-
 }

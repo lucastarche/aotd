@@ -15,8 +15,10 @@ string DecimalToBinary(int n) {
 
     string ans = "";
     while (!bits.empty()) {
-        if (bits.top()) ans += '1';
-        else ans += '0';
+        if (bits.top())
+            ans += '1';
+        else
+            ans += '0';
         bits.pop();
     }
     return ans;

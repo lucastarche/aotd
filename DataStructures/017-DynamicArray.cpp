@@ -7,68 +7,69 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 class DynamicArray {
-    private:
-        int len, used;
-        T *arr;
+private:
+    int len, used;
+    T* arr;
 
-        int nextPow2(int n) {
-            return pow(2, ceil(log(n)/log(2)));
-        }
-    public:
-        DynamicArray<T>() {
-            arr = new T[1];
-            len = 1;
-            used = 0;
-        }
+    int nextPow2(int n) {
+        return pow(2, ceil(log(n) / log(2)));
+    }
 
-        DynamicArray<T>(int n) {
-            n = nextPow2(n);
-            arr = new T[n];
-            len = n;
-            used = 0;
-        }
+public:
+    DynamicArray<T>() {
+        arr = new T[1];
+        len = 1;
+        used = 0;
+    }
 
-        DynamicArray<T>(int n, T val) {
-            used = n;
-            n = nextPow2(n);
-            arr = new T[n];
-            len = n;
-            for (int i = 0; i < used; i++) {
-                arr[i] = val;
+    DynamicArray<T>(int n) {
+        n = nextPow2(n);
+        arr = new T[n];
+        len = n;
+        used = 0;
+    }
+
+    DynamicArray<T>(int n, T val) {
+        used = n;
+        n = nextPow2(n);
+        arr = new T[n];
+        len = n;
+        for (int i = 0; i < used; i++) {
+            arr[i] = val;
+        }
+    }
+
+    T operator[](int n) {
+        return arr[n];
+    }
+
+    int size() {
+        return used;
+    }
+
+    T pop_back() {
+        T temp = arr[used - 1];
+        arr[used - 1] = (T)0;
+        used--;
+        return temp;
+    }
+
+    void push_back(T val) {
+        if (used == len) {
+            len = len << 1;
+            T* temp = arr;
+            arr = new T[len];
+            for (int i = 0; i < len / 2; i++) {
+                arr[i] = temp[i];
             }
-        }
 
-        T operator[](int n) {
-            return arr[n];
+            delete temp;
         }
-
-        int size() {
-            return used;
-        }
-
-        T pop_back() {
-            T temp = arr[used - 1];
-            arr[used - 1] = (T)0;
-            used--;
-            return temp;
-        }
-
-        void push_back(T val) {
-            if (used == len) {
-                len = len<<1;
-                T *temp = arr;
-                arr = new T[len];
-                for (int i = 0; i < len / 2; i++) {
-                    arr[i] = temp[i];
-                }
-
-                delete temp;
-            }
-            arr[used] = val;
-            used++;
-        }
+        arr[used] = val;
+        used++;
+    }
 };
 
 int main() {

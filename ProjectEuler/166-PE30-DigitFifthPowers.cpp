@@ -24,9 +24,10 @@ long long solve() {
     }
 
     for (long long i = 10; i <= upper; i++) {
-        if (sumDigitFifthPower(i) == i) ans += i;
+        if (sumDigitFifthPower(i) == i)
+            ans += i;
     }
-    
+
     return ans;
 }
 

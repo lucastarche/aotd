@@ -6,41 +6,44 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 class BinaryTree {
-    private:
-        vector<T> tree;
-        int size;
+private:
+    vector<T> tree;
+    int size;
 
-    public:
-        BinaryTree() {
-            tree.resize(1);
-            size = 0;
-        }
+public:
+    BinaryTree() {
+        tree.resize(1);
+        size = 0;
+    }
 
-        T operator[](int i) {
-            return tree[i];
-        }
+    T operator[](int i) {
+        return tree[i];
+    }
 
-        int getLeft(int i) {
-            if (i * 2 <= size) return i * 2;
+    int getLeft(int i) {
+        if (i * 2 <= size)
+            return i * 2;
+        return -1;
+    }
+
+    int getRight(int i) {
+        if (i * 2 + 1 <= size)
+            return i * 2 + 1;
+        return -1;
+    }
+
+    int getParent(int i) {
+        if (i == 1)
             return -1;
-        }
+        return i / 2;
+    }
 
-        int getRight(int i) {
-            if (i * 2 + 1 <= size) return i * 2 + 1;
-            return -1;
-        }
-
-        int getParent(int i) {
-            if (i == 1) return -1;
-            return i / 2;
-        }
-
-        void add(T val) {
-            tree.push_back(val);
-            size++;
-        }
+    void add(T val) {
+        tree.push_back(val);
+        size++;
+    }
 };
 
 int main() {

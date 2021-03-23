@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Bozosort(vector<int> &arr) {
+void Bozosort(vector<int>& arr) {
     srand(time(NULL)); //Seed the RNG
     int n = (int)arr.size();
     while (!is_sorted(arr.begin(), arr.end())) {
@@ -29,6 +29,7 @@ int main() {
     Bozosort(arr);
 
     cout << "Sorted array:\n";
-    for (auto i : arr) cout << i << " ";
+    for (auto i : arr)
+        cout << i << " ";
     cout << '\n';
 }

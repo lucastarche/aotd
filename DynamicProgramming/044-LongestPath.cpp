@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int LongestPath(DAG &g) {
+int LongestPath(DAG& g) {
     int n = g.getSize();
     vector<int> order = toposort(g);
     vector<int> longest(n + 1);
@@ -19,7 +19,8 @@ int LongestPath(DAG &g) {
     }
 
     int ans = 0;
-    for (auto val : longest) ans = max(ans, val);
+    for (auto val : longest)
+        ans = max(ans, val);
     return ans;
 }
 

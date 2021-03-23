@@ -6,12 +6,13 @@
 
 using namespace std;
 
-int LIS(vector<int> &v) {
+int LIS(vector<int>& v) {
     int n = (int)v.size();
     vector<int> len(n, 1);
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < k; i++) {
-            if (v[i] < v[k]) len[k] = max(len[k], len[i] + 1);
+            if (v[i] < v[k])
+                len[k] = max(len[k], len[i] + 1);
         }
     }
 
@@ -22,7 +23,8 @@ int main() {
     int n;
     cin >> n;
     vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
 
     int ans = LIS(arr);
     cout << "Longest Increasing Subsequence is: " << ans << '\n';

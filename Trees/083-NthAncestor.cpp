@@ -9,59 +9,64 @@
 using namespace std;
 
 class Tree {
-    private:
-        int n;
-        vector<int> parents;
-        vector<vector<int>> children;
-        vector<vector<int>> ancestors;
-    public:
-        Tree(vector<int> parents) : parents{parents} {
-            int n = (int)parents.size();
-            children.resize(n);
-            ancestors.resize(n);
-            for (int i = 0; i < n; i++) {
-                children[parents[i]].push_back(i);
-            }
+private:
+    int n;
+    vector<int> parents;
+    vector<vector<int>> children;
+    vector<vector<int>> ancestors;
 
-            for (int i = 0; i < n; i++) {
-                ancestors[i].push_back(parents[i]);
-            }
-            
-            int val = 2, exponent = 1;
-            while (val <= n) {
-                for (int i = 0; i < n; i++) {
-                    int lastAncestor = ancestors[i][exponent - 1];
-                    int newAncestor = ancestors[lastAncestor][exponent - 1];
-                    ancestors[i].push_back(newAncestor);
-                }
-
-                val *= 2;
-                exponent++;
-            }
+public:
+    Tree(vector<int> parents)
+        : parents { parents } {
+        int n = (int)parents.size();
+        children.resize(n);
+        ancestors.resize(n);
+        for (int i = 0; i < n; i++) {
+            children[parents[i]].push_back(i);
         }
 
-        int NthAncestor(int node, int x) {
-            if (x > n) return 0;
-            if (node == 0) return 0;
-            if (x == 0) return node;
-
-            int curr = node, val = 1, exponent = 0;
-            while (val <= n) {
-                if (x & val) {
-                    curr = ancestors[curr][exponent];
-                }
-
-                val *= 2;
-                exponent++;
-            }
-            return curr;
+        for (int i = 0; i < n; i++) {
+            ancestors[i].push_back(parents[i]);
         }
+
+        int val = 2, exponent = 1;
+        while (val <= n) {
+            for (int i = 0; i < n; i++) {
+                int lastAncestor = ancestors[i][exponent - 1];
+                int newAncestor = ancestors[lastAncestor][exponent - 1];
+                ancestors[i].push_back(newAncestor);
+            }
+
+            val *= 2;
+            exponent++;
+        }
+    }
+
+    int NthAncestor(int node, int x) {
+        if (x > n)
+            return 0;
+        if (node == 0)
+            return 0;
+        if (x == 0)
+            return node;
+
+        int curr = node, val = 1, exponent = 0;
+        while (val <= n) {
+            if (x & val) {
+                curr = ancestors[curr][exponent];
+            }
+
+            val *= 2;
+            exponent++;
+        }
+        return curr;
+    }
 };
 
 int main() {
     int amount;
     cin >> amount;
-    vector<int> parents = {0};
+    vector<int> parents = { 0 };
     for (int i = 0; i < amount; i++) {
         int temp;
         cin >> temp;
@@ -77,4 +82,4 @@ int main() {
         cin >> node >> n;
         cout << tree.NthAncestor(node, n) << '\n';
     }
-} 
+}

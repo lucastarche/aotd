@@ -1,6 +1,6 @@
 //PE 45: Triangular, Pentagonal, Hexagonal
 //Problem: Tn = n*(n+1)/2, Pn = n*(3*n-1)/2, Hn = n*(2*n - 1). We know that T285 = P165 = H143 = 40755. Find the next triangular number that is also pentagonal and hexagonal.
-//Solution: We can start in the given number to find the next one. Then we can simply iterate, and on each iteration, 
+//Solution: We can start in the given number to find the next one. Then we can simply iterate, and on each iteration,
 //we increase the lowest of the three numbers (the triangular, pentagonal or hexagonal), until we get to a point where the three are all equal.
 //Runtime: O(n)
 #include "EulerUtils.hpp"
@@ -24,12 +24,10 @@ long long solve() {
         if (t <= p && t <= h) {
             t_i++;
             t = triangular(t_i);
-        }
-        else if (p <= h) {
+        } else if (p <= h) {
             p_i++;
             p = pentagonal(p_i);
-        }
-        else {
+        } else {
             h_i++;
             h = hexagonal(h_i);
         }

@@ -5,103 +5,103 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 struct Node {
     T val;
-    Node<T> *parent;
-    Node<T> *left;
-    Node<T> *right;
+    Node<T>* parent;
+    Node<T>* left;
+    Node<T>* right;
 };
 
-template <typename T>
+template<typename T>
 class BinarySearchTree {
-    private:
-        Node<T> *root;
-    public:
-        BinarySearchTree<T>() {
-            root = nullptr;
-        }
+private:
+    Node<T>* root;
 
-        void insert(T val) {
-            if (root == nullptr) {
-                root = new Node<T>;
-                root->val = val;
+public:
+    BinarySearchTree<T>() {
+        root = nullptr;
+    }
+
+    void insert(T val) {
+        if (root == nullptr) {
+            root = new Node<T>;
+            root->val = val;
+            return;
+        }
+        Node<T>* curr = root;
+        while (true) {
+            T currVal = curr->val;
+            if (currVal == val)
                 return;
-            }
-            Node<T> *curr = root;
-            while (true) {
-                T currVal = curr->val;
-                if (currVal == val) return;
-                if (currVal < val) {
-                    if (curr->left == nullptr) {
-                        curr->left = new Node<T>;
-                        curr->left->parent = curr;
-                        curr->left->val = val;
-                        return;
-                    }
-                    else curr = curr->left;
-                }
-                else {
-                    if (curr->right == nullptr) {
-                        curr->right = new Node<T>;
-                        curr->right->parent = curr;
-                        curr->right->val = val;
-                        return;
-                    }
-                    else curr = curr->right;
-                }
-            }
-        }
-
-        Node<T>* find(T val) {
-            Node<T> *curr = root;
-            while (curr != nullptr) {
-                if (curr->val == val) return curr;
-                if (curr->val < val) {
+            if (currVal < val) {
+                if (curr->left == nullptr) {
+                    curr->left = new Node<T>;
+                    curr->left->parent = curr;
+                    curr->left->val = val;
+                    return;
+                } else
                     curr = curr->left;
-                }
-                else {
+            } else {
+                if (curr->right == nullptr) {
+                    curr->right = new Node<T>;
+                    curr->right->parent = curr;
+                    curr->right->val = val;
+                    return;
+                } else
                     curr = curr->right;
-                }
             }
-            return nullptr;
         }
+    }
 
-        bool search(T val) {
-            return find(val) != nullptr;
+    Node<T>* find(T val) {
+        Node<T>* curr = root;
+        while (curr != nullptr) {
+            if (curr->val == val)
+                return curr;
+            if (curr->val < val) {
+                curr = curr->left;
+            } else {
+                curr = curr->right;
+            }
         }
+        return nullptr;
+    }
 
-        void replaceParent(Node<T> *curr, Node<T> *replacement) {
-            if (curr->parent != nullptr) {
-                if (curr == curr->parent->left)
-                    curr->parent->left = replacement;
-                else
-                    curr->parent->right = replacement;
-            }
-        }
+    bool search(T val) {
+        return find(val) != nullptr;
+    }
 
-        void remove(T val) {
-            Node<T> *node = find(val);
-            if (node->left == nullptr && node->right == nullptr) {
-                replaceParent(node, nullptr);
-                delete node;
-            }
-            else if (node->left == nullptr) {
-                replaceParent(node, node->right);
-                delete node;
-            }
-            else if (node->right == nullptr) {
-                replaceParent(node, node->left);
-                delete node;
-            }
-            else {
-                Node<T> *minmax = node->right;
-                while (minmax->left != nullptr) minmax = minmax->left;
-                if (minmax->parent != node) minmax->parent->left = nullptr;
-                replaceParent(node, minmax);
-                delete node;
-            }
+    void replaceParent(Node<T>* curr, Node<T>* replacement) {
+        if (curr->parent != nullptr) {
+            if (curr == curr->parent->left)
+                curr->parent->left = replacement;
+            else
+                curr->parent->right = replacement;
         }
+    }
+
+    void remove(T val) {
+        Node<T>* node = find(val);
+        if (node->left == nullptr && node->right == nullptr) {
+            replaceParent(node, nullptr);
+            delete node;
+        } else if (node->left == nullptr) {
+            replaceParent(node, node->right);
+            delete node;
+        } else if (node->right == nullptr) {
+            replaceParent(node, node->left);
+            delete node;
+        } else {
+            Node<T>* minmax = node->right;
+            while (minmax->left != nullptr)
+                minmax = minmax->left;
+            if (minmax->parent != node)
+                minmax->parent->left = nullptr;
+            replaceParent(node, minmax);
+            delete node;
+        }
+    }
 };
 
 int main() {
@@ -121,8 +121,7 @@ int main() {
         cin >> temp;
         if (BST.search(temp)) {
             cout << temp << ": found\n";
-        }
-        else {
+        } else {
             cout << temp << ": not found\n";
         }
     }

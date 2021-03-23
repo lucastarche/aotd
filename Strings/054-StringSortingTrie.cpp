@@ -6,22 +6,24 @@
 #include "Trie.cpp"
 
 class StringSorter : public Trie {
-    private:
-        void sorted(int node, string prefix, vector<string> &ans) {
-            if (ending[node]) ans.push_back(prefix);
-            for (int i = 0; i < (int)trie[node].size(); i++) {
-                if (trie[node][i] > 0) {
-                    string newPrefix = prefix + (char)i;
-                    sorted(trie[node][i], newPrefix, ans);
-                }
+private:
+    void sorted(int node, string prefix, vector<string>& ans) {
+        if (ending[node])
+            ans.push_back(prefix);
+        for (int i = 0; i < (int)trie[node].size(); i++) {
+            if (trie[node][i] > 0) {
+                string newPrefix = prefix + (char)i;
+                sorted(trie[node][i], newPrefix, ans);
             }
         }
-    public:
-        vector<string> sorted() {
-            vector<string> ans;
-            sorted(0, "", ans);
-            return ans;
-        }
+    }
+
+public:
+    vector<string> sorted() {
+        vector<string> ans;
+        sorted(0, "", ans);
+        return ans;
+    }
 };
 
 int main() {

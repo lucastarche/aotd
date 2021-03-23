@@ -7,9 +7,10 @@
 
 using namespace std;
 
-void CountingSort(string &v) {
+void CountingSort(string& v) {
     vector<int> freq(260, 0);
-    for (auto c : v) freq[c]++;
+    for (auto c : v)
+        freq[c]++;
     int index = 0;
     for (int i = 0; i < 256; i++) {
         for (int j = 0; j < freq[i]; j++) {

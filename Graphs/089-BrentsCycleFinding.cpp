@@ -7,53 +7,56 @@
 using namespace std;
 
 class SuccessorGraph {
-    private:
-        vector<int> next;
-    public:
-        SuccessorGraph(vector<int> next) : next{next} { }
+private:
+    vector<int> next;
 
-        int succ(int x) {
-            return next[x];
-        }
+public:
+    SuccessorGraph(vector<int> next)
+        : next { next } { }
 
-        int size() {
-            return (int)next.size();
-        }
+    int succ(int x) {
+        return next[x];
+    }
 
-        pair<int, int> cycleFinding(int start) {
-            int tortoise = start, hare = succ(start);
-            int power = 1, lambda = 1;
+    int size() {
+        return (int)next.size();
+    }
 
-            while (tortoise != hare) {
-                if (power == lambda) {
-                    tortoise = hare;
-                    power *= 2;
-                    lambda = 0;
-                }
-                hare = succ(hare);
-                lambda++;
+    pair<int, int> cycleFinding(int start) {
+        int tortoise = start, hare = succ(start);
+        int power = 1, lambda = 1;
+
+        while (tortoise != hare) {
+            if (power == lambda) {
+                tortoise = hare;
+                power *= 2;
+                lambda = 0;
             }
-
-            tortoise = hare = start;
-            for (int i = 0; i < lambda; i++) 
-                hare = succ(hare);
-
-            int mu = 0;
-            while (tortoise != hare) {
-                tortoise = succ(tortoise);
-                hare = succ(hare);
-                mu++;
-            }            
-
-            return {mu, lambda};
+            hare = succ(hare);
+            lambda++;
         }
+
+        tortoise = hare = start;
+        for (int i = 0; i < lambda; i++)
+            hare = succ(hare);
+
+        int mu = 0;
+        while (tortoise != hare) {
+            tortoise = succ(tortoise);
+            hare = succ(hare);
+            mu++;
+        }
+
+        return { mu, lambda };
+    }
 };
 
 int main() {
     int n;
     cin >> n;
     vector<int> next(n);
-    for (int i = 0; i < n; i++) cin >> next[i];
+    for (int i = 0; i < n; i++)
+        cin >> next[i];
 
     SuccessorGraph g(next);
 

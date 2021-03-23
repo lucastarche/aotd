@@ -8,60 +8,60 @@
 using namespace std;
 
 class Tree {
-    private:
-        int n;
-        vector<int> parents;
-        vector<vector<int>> children;
-    public:
-        Tree() {
-            parents.resize(1, 0);
-            children.resize(1);
-            n = 1;
-        }
+private:
+    int n;
+    vector<int> parents;
+    vector<vector<int>> children;
 
-        void insert(int parent) {
-            parents.push_back(parent);
-            children.push_back({});
-            children[parent].push_back(n);
-            n++;
-        }
+public:
+    Tree() {
+        parents.resize(1, 0);
+        children.resize(1);
+        n = 1;
+    }
 
-        int RootedLongestPath(int start) {
-            int ans = 0;
-            for (auto child : children[start]) {
-                ans = max(ans, RootedLongestPath(child) + 1);
+    void insert(int parent) {
+        parents.push_back(parent);
+        children.push_back({});
+        children[parent].push_back(n);
+        n++;
+    }
+
+    int RootedLongestPath(int start) {
+        int ans = 0;
+        for (auto child : children[start]) {
+            ans = max(ans, RootedLongestPath(child) + 1);
+        }
+        return ans;
+    }
+
+    int MaxLengthHighestPoint(int start) {
+        if (children[start].size() == 0)
+            return 0;
+        else if (children[start].size() == 1)
+            return RootedLongestPath(children[start][0]) + 1;
+
+        int greatest = 0, secondGreatest = 0;
+        for (auto child : children[start]) {
+            int val = RootedLongestPath(child);
+            if (val > greatest) {
+                secondGreatest = greatest;
+                greatest = val;
+            } else if (val > secondGreatest) {
+                secondGreatest = val;
             }
-            return ans;
         }
 
-        int MaxLengthHighestPoint(int start) {
-            if (children[start].size() == 0) 
-                return 0;
-            else if (children[start].size() == 1) 
-                return RootedLongestPath(children[start][0]) + 1;
-        
-            int greatest = 0, secondGreatest = 0;    
-            for (auto child : children[start]) {
-                int val = RootedLongestPath(child);
-                if (val > greatest) {
-                    secondGreatest = greatest;
-                    greatest = val;
-                }
-                else if (val > secondGreatest) {
-                    secondGreatest = val;
-                }
-            }
+        return greatest + secondGreatest + 2;
+    }
 
-            return greatest + secondGreatest + 2;
+    int TreeDiameter() {
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans = max(ans, MaxLengthHighestPoint(i));
         }
-
-        int TreeDiameter() {
-            int ans = 0;
-            for (int i = 0; i < n; i++) {
-                ans = max(ans, MaxLengthHighestPoint(i));
-            }
-            return ans;
-        }
+        return ans;
+    }
 };
 
 int main() {

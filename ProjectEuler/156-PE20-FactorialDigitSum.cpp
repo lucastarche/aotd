@@ -16,12 +16,14 @@ long long solve() {
             int prod = i * num[j] + carry;
             num[j] = prod % 10;
             carry = prod / 10;
-            if (j == order && carry > 0) order++;
+            if (j == order && carry > 0)
+                order++;
         }
     }
 
     long long ans = 0;
-    for (auto digit : num) ans += (long long)digit;
+    for (auto digit : num)
+        ans += (long long)digit;
     return ans;
 }
 

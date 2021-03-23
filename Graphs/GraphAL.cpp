@@ -4,37 +4,38 @@
 using namespace std;
 
 class GraphAL {
-    private:
-        vector<vector<int>> ady;
-        int size;
-    public:
-        GraphAL(int n) {
-            ady.resize(n + 1);
-            size = n;
-        }
+private:
+    vector<vector<int>> ady;
+    int size;
 
-        void addEdge(int a, int b) {
-            ady[a].push_back(b);
-            ady[b].push_back(a);
-        }
+public:
+    GraphAL(int n) {
+        ady.resize(n + 1);
+        size = n;
+    }
 
-        void addDirectedEdge(int from, int to) {
-            ady[from].push_back(to);
-        }
+    void addEdge(int a, int b) {
+        ady[a].push_back(b);
+        ady[b].push_back(a);
+    }
 
-        bool connected(int from, int to) {
-            for (auto a : ady[from]) {
-                if (a == to) return true;
-            }
-            return false;
-        }
+    void addDirectedEdge(int from, int to) {
+        ady[from].push_back(to);
+    }
 
-        int getSize() {
-            return size;
+    bool connected(int from, int to) {
+        for (auto a : ady[from]) {
+            if (a == to)
+                return true;
         }
+        return false;
+    }
 
-        vector<int> getNeighbours(int n) {
-            return ady[n];
-        }
+    int getSize() {
+        return size;
+    }
+
+    vector<int> getNeighbours(int n) {
+        return ady[n];
+    }
 };
-

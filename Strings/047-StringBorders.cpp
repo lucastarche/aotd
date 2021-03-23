@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int LongestBorder(const string &str) {
+int LongestBorder(const string& str) {
     int n = (int)str.length();
     vector<int> border(n, 0);
 
@@ -16,7 +16,8 @@ int LongestBorder(const string &str) {
             j = border[j - 1];
         }
 
-        if (str[i] == str[j]) j++;
+        if (str[i] == str[j])
+            j++;
         border[i] = j;
     }
 

@@ -5,7 +5,7 @@
 //This is the iterative version, but there is also the (classical) recursive version, which works in a similar way.
 #include "GraphAL.cpp"
 
-vector<bool> DFS(GraphAL &g, int start) {
+vector<bool> DFS(GraphAL& g, int start) {
     stack<int> s;
     vector<bool> visited(g.getSize() + 1);
     s.push(start);
@@ -13,7 +13,8 @@ vector<bool> DFS(GraphAL &g, int start) {
     while (!s.empty()) {
         int curr = s.top();
         s.pop();
-        if (visited[curr]) continue;
+        if (visited[curr])
+            continue;
         visited[curr] = true;
         for (auto node : g.getNeighbours(curr)) {
             s.push(node);
@@ -37,7 +38,9 @@ int main() {
     cin >> source;
     vector<bool> ans = DFS(graph, source);
     for (int i = 1; i <= n; i++) {
-        if (ans[i]) cout << i << " is reachable from " << source << '\n';
-        else cout << i << " is not reachable from " << source << '\n';
+        if (ans[i])
+            cout << i << " is reachable from " << source << '\n';
+        else
+            cout << i << " is not reachable from " << source << '\n';
     }
 }

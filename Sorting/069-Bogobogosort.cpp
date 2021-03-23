@@ -6,15 +6,15 @@
 
 using namespace std;
 
-void Bogobogosort(vector<int> &v) {
+void Bogobogosort(vector<int>& v) {
     random_shuffle(v.begin(), v.end());
-    if (v.size() == 1) return;
+    if (v.size() == 1)
+        return;
     int b = 2;
     while (!is_sorted(v.begin(), v.end())) {
         if (is_sorted(v.begin(), v.begin() + b)) {
             b++;
-        }
-        else {
+        } else {
             b = 2;
         }
         random_shuffle(v.begin(), v.begin() + b);
@@ -32,6 +32,7 @@ int main() {
     Bogobogosort(arr);
 
     cout << "Sorted array: ";
-    for (auto a : arr) cout << a << " ";
+    for (auto a : arr)
+        cout << a << " ";
     cout << '\n';
 }

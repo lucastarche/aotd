@@ -9,42 +9,43 @@
 using namespace std;
 
 class FenwickTree {
-    private:
-        vector<int> tree;
-    public:
-        FenwickTree(const vector<int> &arr) {
-            int N = (int)arr.size();
-            tree.resize(N + 1, 0);
-            for (int i = 1; i <= N; i++) {
-                replace(i, arr[i]);
-            }
-        }
+private:
+    vector<int> tree;
 
-        int LeastSignificantOne(int index) {
-            return index & -index;
+public:
+    FenwickTree(const vector<int>& arr) {
+        int N = (int)arr.size();
+        tree.resize(N + 1, 0);
+        for (int i = 1; i <= N; i++) {
+            replace(i, arr[i]);
         }
+    }
 
-        void replace(int index, int val) {
-            int delta = val - tree[index];
-            while (index <= tree.size()) {
-                tree[index] += delta;
-                index += LeastSignificantOne(index);
-            }
-        }
+    int LeastSignificantOne(int index) {
+        return index & -index;
+    }
 
-        //Gets the subarray sum in the range [1, index]
-        int sum(int index) {
-            int ans = 0;
-            while (index >= 1) {
-                ans += tree[index];
-                index -= LeastSignificantOne(index);
-            }
-            return ans;
+    void replace(int index, int val) {
+        int delta = val - tree[index];
+        while (index <= tree.size()) {
+            tree[index] += delta;
+            index += LeastSignificantOne(index);
         }
+    }
 
-        int sum(int from, int to) {
-            return sum(to) - sum(from - 1);
+    //Gets the subarray sum in the range [1, index]
+    int sum(int index) {
+        int ans = 0;
+        while (index >= 1) {
+            ans += tree[index];
+            index -= LeastSignificantOne(index);
         }
+        return ans;
+    }
+
+    int sum(int from, int to) {
+        return sum(to) - sum(from - 1);
+    }
 };
 
 int main() {
@@ -65,8 +66,7 @@ int main() {
             int index, val;
             cin >> index >> val;
             FT.replace(index, val);
-        }
-        else if (type == 'Q') {
+        } else if (type == 'Q') {
             int from, to;
             cin >> from >> to;
             cout << FT.sum(from, to) << '\n';

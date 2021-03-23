@@ -7,7 +7,7 @@
 
 const int INF = 1e9;
 
-vector<int> Dijkstra(GraphWAL &g, int start) {
+vector<int> Dijkstra(GraphWAL& g, int start) {
     int n = g.getSize();
     priority_queue<pair<int, int>> q;
     vector<int> dist(n + 1, -1);
@@ -18,12 +18,13 @@ vector<int> Dijkstra(GraphWAL &g, int start) {
     }
 
     dist[start] = 0;
-    q.push({0, start});
+    q.push({ 0, start });
 
     while (!q.empty()) {
         int curr = q.top().second;
         q.pop();
-        if (processed[curr]) continue;
+        if (processed[curr])
+            continue;
         processed[curr] = true;
 
         for (auto u : g.getNeighbours(curr)) {
@@ -31,7 +32,7 @@ vector<int> Dijkstra(GraphWAL &g, int start) {
             int weight = u.first;
             if (dist[curr] + weight < dist[node]) {
                 dist[node] = dist[curr] + weight;
-                q.push({-dist[node], node});
+                q.push({ -dist[node], node });
             }
         }
     }
@@ -55,8 +56,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (ans[i] < INF) {
             cout << i << " is " << ans[i] << " away from " << source << '\n';
-        }
-        else cout << i << " is not reachable from " << source << '\n';
+        } else
+            cout << i << " is not reachable from " << source << '\n';
     }
-
 }

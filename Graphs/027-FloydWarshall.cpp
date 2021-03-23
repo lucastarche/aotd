@@ -4,7 +4,7 @@
 //Runtime: O(n^3) with Adjacency Matrix
 #include "GraphWAM.cpp"
 
-vector<vector<int>> FloydWarshall(GraphWAM &g) {
+vector<vector<int>> FloydWarshall(GraphWAM& g) {
     int n = g.getSize();
     vector<vector<int>> dist(n + 1, vector<int>(n + 1, INF));
 

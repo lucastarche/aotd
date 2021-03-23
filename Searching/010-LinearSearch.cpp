@@ -7,9 +7,10 @@
 
 using namespace std;
 
-bool LinearSearch(const vector<int> &v, int val) {
+bool LinearSearch(const vector<int>& v, int val) {
     for (int i = 0; i < (int)v.size(); i++) {
-        if (v[i] == val) return true;
+        if (v[i] == val)
+            return true;
     }
     return false;
 }
@@ -18,9 +19,12 @@ int main() {
     int n, val;
     cin >> n;
     vector<int> elements(n);
-    for (int i = 0; i < n; i++) cin >> elements[i];
+    for (int i = 0; i < n; i++)
+        cin >> elements[i];
     cin >> val;
     bool found = LinearSearch(elements, val);
-    if (found) cout << val << " is in the array.\n";
-    else cout << val << " is not in the array.\n";
+    if (found)
+        cout << val << " is in the array.\n";
+    else
+        cout << val << " is not in the array.\n";
 }

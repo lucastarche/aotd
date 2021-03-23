@@ -10,17 +10,20 @@ long long solve() {
 
     long long ans = 0LL;
     for (long long i = 0; i <= 1000000LL; i++) {
-        if (!sieve[i]) continue;
+        if (!sieve[i])
+            continue;
         string numStr = to_string(i);
         string wrapped = numStr + numStr;
 
         long long n = (long long)numStr.size();
         bool isCircularPrime = true;
         for (long long j = 1; j < n; j++) {
-            if (!sieve[stoll(wrapped.substr(j, n))]) isCircularPrime = false;
+            if (!sieve[stoll(wrapped.substr(j, n))])
+                isCircularPrime = false;
         }
 
-        if (isCircularPrime) ans++;
+        if (isCircularPrime)
+            ans++;
     }
     return ans;
 }

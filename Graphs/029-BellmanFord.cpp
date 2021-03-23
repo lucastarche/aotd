@@ -7,7 +7,7 @@
 
 const int INF = 1e9;
 
-vector<int> BellmanFord(GraphWAL &g, int start) {
+vector<int> BellmanFord(GraphWAL& g, int start) {
     int n = g.getSize();
     vector<int> dist(n + 1, INF);
     dist[start] = 0;
@@ -52,8 +52,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (ans[i] < INF) {
             cout << i << " is " << ans[i] << " away from " << source << '\n';
-        }
-        else cout << i << " is not reachable from " << source << '\n';
+        } else
+            cout << i << " is not reachable from " << source << '\n';
     }
-
 }

@@ -3,8 +3,8 @@
 //Example: 349 -> 349 + 943 = 1292 -> 1292 + 2921 = 4213 -> 4213 + 3124 = 7337, so it isnt a lychrel number.
 //Solution: We can use a BigInteger implementation, such as the one I have in tarche_num, and then just do as asked.
 //Runtime: O(k^2 n log n), where k is the number of iterations, and n is the upper bound.
-#include "EulerUtils.hpp"
 #include "BigInteger.hpp"
+#include "EulerUtils.hpp"
 
 using namespace tarche_num;
 
@@ -24,7 +24,8 @@ long long solve() {
                 break;
             }
         }
-        if (isLychrelNum) ans++;
+        if (isLychrelNum)
+            ans++;
     }
     return ans;
 }

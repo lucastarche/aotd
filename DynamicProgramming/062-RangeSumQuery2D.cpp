@@ -11,33 +11,35 @@
 using namespace std;
 
 class RangeSum2D {
-    private:
-        vector<vector<int>> mat;
-    public:
-        RangeSum2D(const vector<vector<int>> &in) {
-            int N = (int)in.size();
-            int M = (int)in[0].size();
-            mat.resize(N, vector<int>(M));
+private:
+    vector<vector<int>> mat;
 
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < M; j++) {
-                    mat[i][j] = query(i - 1, j) + query(i, j - 1) - query(i - 1, j - 1) + in[i][j];
-                }
+public:
+    RangeSum2D(const vector<vector<int>>& in) {
+        int N = (int)in.size();
+        int M = (int)in[0].size();
+        mat.resize(N, vector<int>(M));
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                mat[i][j] = query(i - 1, j) + query(i, j - 1) - query(i - 1, j - 1) + in[i][j];
             }
         }
+    }
 
-        int query(int x1, int y1) {
-            if (x1 < 0 || y1 < 0) return 0;
-            return mat[x1][y1];
-        }
+    int query(int x1, int y1) {
+        if (x1 < 0 || y1 < 0)
+            return 0;
+        return mat[x1][y1];
+    }
 
-        int query(int x1, int y1, int x2, int y2) {
-            int A = query(x1 - 1, y1 - 1);
-            int B = query(x1 - 1, y2 - 1);
-            int C = query(x2 - 1, y1 - 1);
-            int D = query(x2, y2);
-            return D - C - B + A;
-        }
+    int query(int x1, int y1, int x2, int y2) {
+        int A = query(x1 - 1, y1 - 1);
+        int B = query(x1 - 1, y2 - 1);
+        int C = query(x2 - 1, y1 - 1);
+        int D = query(x2, y2);
+        return D - C - B + A;
+    }
 };
 
 int main() {

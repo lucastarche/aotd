@@ -6,27 +6,29 @@
 using namespace std;
 
 class SubarraySum {
-    private:
-        vector<int> prefix;
-    public:
-        SubarraySum(vector<int> &input) {
-            int n = (int)input.size();
-            prefix.resize(n + 1);
-            for (int i = 0; i < n; i++) {
-                prefix[i + 1] = input[i] + prefix[i];
-            }
-        }
+private:
+    vector<int> prefix;
 
-        int query(int from, int to) {
-            return prefix[to] - prefix[from];
+public:
+    SubarraySum(vector<int>& input) {
+        int n = (int)input.size();
+        prefix.resize(n + 1);
+        for (int i = 0; i < n; i++) {
+            prefix[i + 1] = input[i] + prefix[i];
         }
+    }
+
+    int query(int from, int to) {
+        return prefix[to] - prefix[from];
+    }
 };
 
 int main() {
     int n;
     cin >> n;
     vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
     SubarraySum subarrSum(arr);
 
     int q;

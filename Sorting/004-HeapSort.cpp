@@ -9,9 +9,10 @@
 
 using namespace std;
 
-void HeapSort(vector<int> &v) {
+void HeapSort(vector<int>& v) {
     priority_queue<int> heap;
-    for (auto a : v) heap.push(a);
+    for (auto a : v)
+        heap.push(a);
     int ctr = 0;
     while (!heap.empty()) {
         v[ctr] = heap.top();
@@ -25,9 +26,11 @@ int main() {
     int n;
     cin >> n;
     vector<int> elements(n);
-    for (int i = 0; i < n; i++) cin >> elements[i];
+    for (int i = 0; i < n; i++)
+        cin >> elements[i];
     HeapSort(elements);
     cout << "Sorted Array:\n";
-    for (auto a : elements) cout << a << " ";
+    for (auto a : elements)
+        cout << a << " ";
     cout << '\n';
 }

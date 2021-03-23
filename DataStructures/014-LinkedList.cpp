@@ -7,54 +7,57 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 struct Node {
     T val;
-    struct Node *next;
+    struct Node* next;
 };
 
-template <typename T>
+template<typename T>
 class LinkedList {
-    private:
-        Node<T> *head, *tail;
-    public:
-        LinkedList() {
-            head = nullptr;
-            tail = nullptr;
-        }
+private:
+    Node<T>*head, *tail;
 
-        ~LinkedList() {
-            Node<T> *next;
-            while (head != nullptr) {
-                next = head->next;
-                delete head;
-                head = next;
-            }
-        }
+public:
+    LinkedList() {
+        head = nullptr;
+        tail = nullptr;
+    }
 
-        void append(int n) {
-            Node<T> *temp = new Node<T>;
-            temp->val = n;
-            temp->next = nullptr;
-            if (head == nullptr) head = tail = temp;
-            else tail = tail->next = temp;
+    ~LinkedList() {
+        Node<T>* next;
+        while (head != nullptr) {
+            next = head->next;
+            delete head;
+            head = next;
         }
+    }
 
-        //Returns the value at the nth position, or the last one if there aren't enough nodes.
-        int getValueAtPos(int n) {
-            Node<T> *temp = head;
-            while (temp != nullptr && n > 0) {
-                temp = temp->next;
-                n--;
-            }
-            return temp->val;
+    void append(int n) {
+        Node<T>* temp = new Node<T>;
+        temp->val = n;
+        temp->next = nullptr;
+        if (head == nullptr)
+            head = tail = temp;
+        else
+            tail = tail->next = temp;
+    }
+
+    //Returns the value at the nth position, or the last one if there aren't enough nodes.
+    int getValueAtPos(int n) {
+        Node<T>* temp = head;
+        while (temp != nullptr && n > 0) {
+            temp = temp->next;
+            n--;
         }
+        return temp->val;
+    }
 };
 
 int main() {
     int n;
     cin >> n;
-    LinkedList<int> *list = new LinkedList<int>();
+    LinkedList<int>* list = new LinkedList<int>();
     for (int i = 0; i < n; i++) {
         int temp;
         cin >> temp;

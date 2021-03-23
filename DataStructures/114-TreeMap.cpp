@@ -4,12 +4,12 @@
 //Runtime: O(log n) insertion and deletion.
 #include "RedBlackTree/KeyRedBlackTree.cpp"
 
-template <typename T, typename S>
+template<typename T, typename S>
 class TreeMap : public KeyedRBTree<T, S> {
-    public:
-        S get(T key) {
-            return KeyedRBTree<T, S>::search(key)->value;
-        }
+public:
+    S get(T key) {
+        return KeyedRBTree<T, S>::search(key)->value;
+    }
 };
 
 int main() {

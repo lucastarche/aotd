@@ -12,8 +12,7 @@ double long SquareRoot(double long n) {
     while (abs(mid * mid - n) > EPS) {
         if (mid * mid > n) {
             right = mid;
-        }
-        else {
+        } else {
             left = mid;
         }
         mid = (left + right) / 2.0;

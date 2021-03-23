@@ -10,7 +10,7 @@ long long solve() {
     long long sum = range_sum(100LL);
     long long a = sum * sum;
     long long b = 0;
-    
+
     for (long long i = 1; i <= 100; i++) {
         b += i * i;
     }

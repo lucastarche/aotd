@@ -11,7 +11,7 @@ long long solve() {
     for (long long i = 1; i < 30000LL; i++) {
         if (accumulate(divisors(i)) - i > i) {
             abundantNumbers.push_back(i);
-        } 
+        }
     }
 
     int k = (int)abundantNumbers.size();
@@ -20,7 +20,8 @@ long long solve() {
         for (int j = i; j < k; j++) {
             long long a = abundantNumbers[i];
             long long b = abundantNumbers[j];
-            if (a + b >= 30000LL) break;
+            if (a + b >= 30000LL)
+                break;
             possible[a + b] = true;
         }
     }

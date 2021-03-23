@@ -18,8 +18,7 @@ long long solve() {
             if (a == -1 || b == -1) {
                 triangle[i][j] = -1;
                 ans++;
-            }
-            else {
+            } else {
                 triangle[i][j] = a + b;
                 if (triangle[i][j] > 1000000) {
                     triangle[i][j] = -1;

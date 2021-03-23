@@ -20,4 +20,3 @@ long long solve() {
 int main() {
     cout << solve() << '\n';
 }
-

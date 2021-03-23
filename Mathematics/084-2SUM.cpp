@@ -7,21 +7,22 @@
 
 using namespace std;
 
-bool TwoSUM(const vector<int> &nums, int target) {
+bool TwoSUM(const vector<int>& nums, int target) {
     int n = (int)nums.size();
 
     int lptr = 0, rptr = n - 1;
     for (int sum = nums[lptr] + nums[rptr]; sum != target; sum = nums[lptr] + nums[rptr]) {
-        if (lptr >= rptr) break;
+        if (lptr >= rptr)
+            break;
         if (sum > target) {
             rptr--;
-        }
-        else {
+        } else {
             lptr++;
         }
     }
 
-    if (nums[lptr] + nums[rptr] == target) return true;
+    if (nums[lptr] + nums[rptr] == target)
+        return true;
     return false;
 }
 
@@ -29,7 +30,8 @@ int main() {
     int n, x;
     cin >> n >> x;
     vector<int> nums(n);
-    for (int i = 0; i < n; i++) cin >> nums[i];
+    for (int i = 0; i < n; i++)
+        cin >> nums[i];
 
     cout << TwoSUM(nums, x) << '\n';
 }

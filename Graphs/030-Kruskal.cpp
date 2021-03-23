@@ -5,7 +5,7 @@
 #include "GraphWEL.cpp"
 #include "UnionFind.cpp"
 
-int Kruskal(GraphWEL &g) {
+int Kruskal(GraphWEL& g) {
     int ans = 0, n = g.getSize();
     vector<tuple<int, int, int>> edges = g.getEdges();
     sort(edges.begin(), edges.end());

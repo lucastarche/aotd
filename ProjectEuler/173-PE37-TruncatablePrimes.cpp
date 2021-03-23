@@ -9,14 +9,18 @@
 vector<bool> sieve;
 
 bool isRightTruncatablePrime(long long n) {
-    if (n < 10) return sieve[n];
-    if (!sieve[n]) return false;
+    if (n < 10)
+        return sieve[n];
+    if (!sieve[n])
+        return false;
     return isRightTruncatablePrime(n / 10LL);
 }
 
 bool isLeftTruncatablePrime(long long n) {
-    if (n < 10) return sieve[n];
-    if (!sieve[n]) return false;
+    if (n < 10)
+        return sieve[n];
+    if (!sieve[n])
+        return false;
     long long mod = 1LL;
     while (mod * 10LL < n) {
         mod *= 10LL;
@@ -24,7 +28,7 @@ bool isLeftTruncatablePrime(long long n) {
     return isLeftTruncatablePrime(n % mod);
 }
 
-bool isTruncatablePrime(long long n) { 
+bool isTruncatablePrime(long long n) {
     return isRightTruncatablePrime(n) && isLeftTruncatablePrime(n);
 }
 
@@ -37,11 +41,11 @@ long long solve() {
             amount++;
         }
 
-        if (amount == 11LL) break;
+        if (amount == 11LL)
+            break;
     }
     return ans;
 }
-
 
 int main() {
     cout << solve() << '\n';

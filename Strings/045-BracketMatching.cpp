@@ -14,20 +14,23 @@ bool BracketMatching(string sequence) {
     for (auto a : sequence) {
         if (a == '(' || a == '[' || a == '{') {
             brackets.push(a);
-        }
-        else if (a == ')') {
-            if (!brackets.empty() && brackets.top() == '(') brackets.pop();
-            else return false;
-        }
-        else if (a == ']') {
-            if (!brackets.empty() && brackets.top() == '[') brackets.pop();
-            else return false;
-        }
-        else if (a == '}') {
-            if (!brackets.empty() && brackets.top() == '{') brackets.pop();
-            else return false;
-        }
-        else continue;
+        } else if (a == ')') {
+            if (!brackets.empty() && brackets.top() == '(')
+                brackets.pop();
+            else
+                return false;
+        } else if (a == ']') {
+            if (!brackets.empty() && brackets.top() == '[')
+                brackets.pop();
+            else
+                return false;
+        } else if (a == '}') {
+            if (!brackets.empty() && brackets.top() == '{')
+                brackets.pop();
+            else
+                return false;
+        } else
+            continue;
     }
 
     return true;
@@ -38,6 +41,6 @@ int main() {
     cin >> in;
     if (BracketMatching(in)) {
         cout << "The expression is valid" << '\n';
-    }
-    else cout << "The expression is not valid" << '\n';
+    } else
+        cout << "The expression is not valid" << '\n';
 }

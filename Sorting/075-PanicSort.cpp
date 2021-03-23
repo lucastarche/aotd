@@ -19,12 +19,12 @@ vector<int> PanicSort(vector<int> arr) {
     if (is_sorted(arr.begin(), arr.end())) {
         return arr;
     }
-    //Shit shit shit please work please 
+    //Shit shit shit please work please
     if (is_sorted(arr.begin(), arr.end())) {
         return arr;
     }
     //Craaap i hope they dont notice.
-    return {1, 2, 3, 4, 5};
+    return { 1, 2, 3, 4, 5 };
 }
 
 int main() {
@@ -40,6 +40,7 @@ int main() {
     arr = PanicSort(arr);
 
     cout << "Sorted array:\n";
-    for (auto i : arr) cout << i << " ";
+    for (auto i : arr)
+        cout << i << " ";
     cout << '\n';
 }

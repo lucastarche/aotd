@@ -1,10 +1,10 @@
 //TreeSet
 //It is a direct implementation of the Red-Black Tree, so we don't need to add any extra code to it.
 //We can, however, use this class as a sort of "wrapper", to which we can add extra functionality.
-//Runtime: O(log n) insertion and deletion. 
+//Runtime: O(log n) insertion and deletion.
 #include "RedBlackTree/RedBlackTree.cpp"
 
-template <typename T>
+template<typename T>
 class TreeSet : public RBTree<T> { };
 
 int main() {

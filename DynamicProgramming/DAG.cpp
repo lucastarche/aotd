@@ -3,31 +3,32 @@
 using namespace std;
 
 class DAG {
-    private:
-        vector<vector<int>> ady;
-        vector<int> indegree;
-        int size;
-    public:
-        DAG(int n) {
-            ady.resize(n + 1);
-            indegree.resize(n + 1);
-            size = n;
-        }
+private:
+    vector<vector<int>> ady;
+    vector<int> indegree;
+    int size;
 
-        void addEdge(int from, int to) {
-            ady[from].push_back(to);
-            indegree[to]++;
-        }
+public:
+    DAG(int n) {
+        ady.resize(n + 1);
+        indegree.resize(n + 1);
+        size = n;
+    }
 
-        int getSize() {
-            return size;
-        }
+    void addEdge(int from, int to) {
+        ady[from].push_back(to);
+        indegree[to]++;
+    }
 
-        vector<int> getNeighbours(int n) {
-            return ady[n];
-        }
+    int getSize() {
+        return size;
+    }
 
-        int getIndegree(int n) {
-            return indegree[n];
-        }
+    vector<int> getNeighbours(int n) {
+        return ady[n];
+    }
+
+    int getIndegree(int n) {
+        return indegree[n];
+    }
 };

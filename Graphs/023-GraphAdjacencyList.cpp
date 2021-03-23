@@ -6,28 +6,30 @@
 using namespace std;
 
 class GraphAL {
-    private:
-        vector<vector<int>> ady;
-    public:
-        GraphAL(int n) {
-            ady.resize(n + 1);
-        }
+private:
+    vector<vector<int>> ady;
 
-        void addEdge(int a, int b) {
-            ady[a].push_back(b);
-            ady[b].push_back(a);
-        }
+public:
+    GraphAL(int n) {
+        ady.resize(n + 1);
+    }
 
-        void addDirectedEdge(int from, int to) {
-            ady[from].push_back(to);
-        }
+    void addEdge(int a, int b) {
+        ady[a].push_back(b);
+        ady[b].push_back(a);
+    }
 
-        bool connected(int from, int to) {
-            for (auto a : ady[from]) {
-                if (a == to) return true;
-            }
-            return false;
+    void addDirectedEdge(int from, int to) {
+        ady[from].push_back(to);
+    }
+
+    bool connected(int from, int to) {
+        for (auto a : ady[from]) {
+            if (a == to)
+                return true;
         }
+        return false;
+    }
 };
 
 int main() {
@@ -47,8 +49,7 @@ int main() {
         cin >> from >> to;
         if (graph.connected(from, to)) {
             cout << from << " is connected to " << to << '\n';
-        }
-        else {
+        } else {
             cout << from << " is not connected to " << to << '\n';
         }
     }

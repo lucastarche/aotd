@@ -6,7 +6,7 @@
 
 const int INF = 1e9;
 
-vector<int> SPFA(GraphWAL &g, int start) {
+vector<int> SPFA(GraphWAL& g, int start) {
     int n = g.getSize();
     vector<int> dist(n + 1, INF);
     queue<int> q;
@@ -37,7 +37,8 @@ vector<int> SPFA(GraphWAL &g, int start) {
 
     bool hasNegativeCycle = false;
     for (int i = 1; i <= n; i++) {
-        if (queueTimes[i] >= n) hasNegativeCycle = true;
+        if (queueTimes[i] >= n)
+            hasNegativeCycle = true;
     }
 
     if (hasNegativeCycle)
@@ -62,8 +63,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (ans[i] < INF) {
             cout << i << " is " << ans[i] << " away from " << source << '\n';
-        }
-        else cout << i << " is not reachable from " << source << '\n';
+        } else
+            cout << i << " is not reachable from " << source << '\n';
     }
-
 }

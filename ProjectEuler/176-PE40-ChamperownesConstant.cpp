@@ -15,7 +15,7 @@ long long solve() {
     for (long long i = 1; i <= 1000000LL; i *= 10LL) {
         ans *= (long long)(fraction[i - 1] - '0');
     }
-    
+
     return ans;
 }
 

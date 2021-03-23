@@ -6,16 +6,17 @@
 #include "SuffixTrie.cpp"
 
 class StringMatching : public SuffixTrie {
-    public:
-        bool checkPattern(string pattern) {
-            int curr = 0;
-            for (auto c : pattern) {
-                if (trie[curr][c] > 0)
-                    curr = trie[curr][c];
-                else return false;
-            }
-            return true;
+public:
+    bool checkPattern(string pattern) {
+        int curr = 0;
+        for (auto c : pattern) {
+            if (trie[curr][c] > 0)
+                curr = trie[curr][c];
+            else
+                return false;
         }
+        return true;
+    }
 };
 
 int main() {
@@ -38,8 +39,7 @@ int main() {
         cin >> query;
         if (trie.checkPattern(query)) {
             cout << query << " appears in the text." << '\n';
-        }
-        else {
+        } else {
             cout << query << " does not appear in the text." << '\n';
         }
     }

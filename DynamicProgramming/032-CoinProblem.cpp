@@ -8,7 +8,7 @@ using namespace std;
 
 const int INF = 1e9;
 
-int CoinProblem(vector<int> &coins, int target) {
+int CoinProblem(vector<int>& coins, int target) {
     vector<int> table(target + 1, INF);
     table[0] = 0; //We need 0 coins to form $0.
     for (int i = 1; i <= target; i++) {
@@ -24,10 +24,13 @@ int main() {
     int n, target;
     cin >> n;
     vector<int> coins(n);
-    for (int i = 0; i < n; i++) cin >> coins[i];
+    for (int i = 0; i < n; i++)
+        cin >> coins[i];
     cin >> target;
 
     int ans = CoinProblem(coins, target);
-    if (ans == INF) cout << target << " can't be formed with the given coins." << '\n';
-    else cout << target << " can be formed with " << ans << " coins" << '\n';
+    if (ans == INF)
+        cout << target << " can't be formed with the given coins." << '\n';
+    else
+        cout << target << " can be formed with " << ans << " coins" << '\n';
 }

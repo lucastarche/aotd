@@ -20,7 +20,7 @@ long long solve() {
     vector<int> fib1(digits, 0);
     vector<int> fib2(digits, 0);
     vector<int> swp(digits, 0);
-    
+
     fib1[0] = 1;
     fib2[0] = 1;
     int index = 2;
@@ -30,7 +30,8 @@ long long solve() {
             int sum = fib1[j] + fib2[j] + carry;
             swp[j] = sum % 10;
             carry = sum / 10;
-            if (j == order && carry > 0) order++;
+            if (j == order && carry > 0)
+                order++;
         }
 
         swap(fib1, fib2);
@@ -44,4 +45,3 @@ long long solve() {
 int main() {
     cout << solve() << '\n';
 }
-

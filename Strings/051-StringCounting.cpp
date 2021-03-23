@@ -5,45 +5,44 @@
 #include "Trie.cpp"
 
 class StringCounting : public Trie {
-    private:
-        vector<int> counter;
-    public:
-        StringCounting() {
-            Trie();
-            counter.resize(1, 0);
-        }
+private:
+    vector<int> counter;
 
-        void add(string in) {
-            int curr = 0;
-            for (auto c : in) {
-                if (trie[curr][c] > 0) {
-                    curr = trie[curr][c];
-                }
-                else {
-                    trie[curr][c] = size;
-                    ending.push_back(false);
-                    trie.push_back(vector<int>(256, 0));
-                    counter.push_back(0);
-                    curr = size;
-                    size++;
-                }
-            }
-            counter[curr]++;
-            ending[curr] = true;
-        }
+public:
+    StringCounting() {
+        Trie();
+        counter.resize(1, 0);
+    }
 
-        int count(string in) {
-            int curr = 0;
-            for (auto c : in) {
-                if (trie[curr][c] > 0) {
-                    curr = trie[curr][c];
-                }
-                else {
-                    return 0;
-                }
+    void add(string in) {
+        int curr = 0;
+        for (auto c : in) {
+            if (trie[curr][c] > 0) {
+                curr = trie[curr][c];
+            } else {
+                trie[curr][c] = size;
+                ending.push_back(false);
+                trie.push_back(vector<int>(256, 0));
+                counter.push_back(0);
+                curr = size;
+                size++;
             }
-            return counter[curr];
         }
+        counter[curr]++;
+        ending[curr] = true;
+    }
+
+    int count(string in) {
+        int curr = 0;
+        for (auto c : in) {
+            if (trie[curr][c] > 0) {
+                curr = trie[curr][c];
+            } else {
+                return 0;
+            }
+        }
+        return counter[curr];
+    }
 };
 
 int main() {

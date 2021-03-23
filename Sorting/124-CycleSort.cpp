@@ -6,25 +6,29 @@
 
 using namespace std;
 
-void CycleSort(vector<int> &arr) {
+void CycleSort(vector<int>& arr) {
     int n = (int)arr.size();
     for (int cycleStart = 0; cycleStart < n - 1; cycleStart++) {
         int item = arr[cycleStart];
 
         int pos = cycleStart;
         for (int i = cycleStart + 1; i < n; i++) {
-            if (arr[i] < item) pos++;
+            if (arr[i] < item)
+                pos++;
         }
 
-        if (pos == cycleStart) continue;
+        if (pos == cycleStart)
+            continue;
 
-        while (item == arr[pos]) pos++;
+        while (item == arr[pos])
+            pos++;
         swap(arr[pos], item);
 
         while (pos != cycleStart) {
             pos = cycleStart;
             for (int i = cycleStart + 1; i < n; i++) {
-                if (arr[i] < item) pos++;
+                if (arr[i] < item)
+                    pos++;
             }
             swap(arr[pos], item);
         }
@@ -35,10 +39,12 @@ int main() {
     int n;
     cin >> n;
     vector<int> arr(n, 0);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
 
     CycleSort(arr);
 
-    for (auto a : arr) cout << a << ' ';
+    for (auto a : arr)
+        cout << a << ' ';
     cout << '\n';
 }

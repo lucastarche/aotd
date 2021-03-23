@@ -7,7 +7,7 @@
 
 const int INF = 1e9;
 
-vector<int> BFS01(GraphWAL &g, int start) {
+vector<int> BFS01(GraphWAL& g, int start) {
     int n = g.getSize();
     vector<int> dist(n + 1, INF);
 
@@ -24,8 +24,10 @@ vector<int> BFS01(GraphWAL &g, int start) {
             int w = a.first, node = a.second;
             if (dist[node] > dist[curr] + w) {
                 dist[node] = dist[curr] + w;
-                if (w == 0) q.push_front(node);
-                else q.push_back(node);
+                if (w == 0)
+                    q.push_front(node);
+                else
+                    q.push_back(node);
             }
         }
     }
@@ -48,8 +50,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (ans[i] != INF) {
             cout << i << " is " << ans[i] << " away from " << source << '\n';
-        }
-        else cout << i << " is not reachable from " << source << '\n';
+        } else
+            cout << i << " is not reachable from " << source << '\n';
     }
-
 }

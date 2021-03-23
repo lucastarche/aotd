@@ -14,8 +14,10 @@ long long solve(vector<string> words) {
 
     for (auto word : words) {
         long long val = 0LL;
-        for (auto c : word) val += (long long)(c - 'A' + 1);
-        if (triangleNumbers.count(val)) ans++;
+        for (auto c : word)
+            val += (long long)(c - 'A' + 1);
+        if (triangleNumbers.count(val))
+            ans++;
     }
 
     return ans;
@@ -28,16 +30,16 @@ int main() {
     char curr;
     while (in >> curr) {
         switch (curr) {
-            case '"': 
-                if (buf != "") {
-                    words.push_back(buf);
-                    buf = "";
-                }
-            case ' ':
-            case ',':
-                break;
-            default:
-                buf += curr;
+        case '"':
+            if (buf != "") {
+                words.push_back(buf);
+                buf = "";
+            }
+        case ' ':
+        case ',':
+            break;
+        default:
+            buf += curr;
         }
     }
 

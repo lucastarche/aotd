@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void OddEvenSort(vector<int> &arr) {
+void OddEvenSort(vector<int>& arr) {
     int n = (int)arr.size();
     bool swapped = true;
     while (swapped) {
@@ -32,10 +32,12 @@ int main() {
     int n;
     cin >> n;
     vector<int> arr(n, 0);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
 
     OddEvenSort(arr);
 
-    for (auto a : arr) cout << a << ' ';
+    for (auto a : arr)
+        cout << a << ' ';
     cout << '\n';
 }

@@ -19,7 +19,8 @@ vector<int> Factor(int n) {
             n /= i;
         }
     }
-    if (n > 2) ans.push_back(n);
+    if (n > 2)
+        ans.push_back(n);
     return ans;
 }
 
@@ -29,6 +30,7 @@ int main() {
     vector<int> ans = Factor(n);
 
     cout << "Factors: ";
-    for (auto a : ans) cout << a << " ";
+    for (auto a : ans)
+        cout << a << " ";
     cout << '\n';
 }

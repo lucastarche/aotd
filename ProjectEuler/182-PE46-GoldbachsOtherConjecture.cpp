@@ -11,28 +11,35 @@ long long solve() {
     vector<long long> squares;
 
     for (long long i = 0; i <= 1000000LL; i++) {
-        if (sieve[i]) primes.push_back(i);
+        if (sieve[i])
+            primes.push_back(i);
     }
 
     for (long long i = 0LL; i * i <= 1000000LL; i++) {
         squares.push_back(i * i);
     }
 
-    for (long long i = 3LL; i <= 1000000LL; i+=2) {
-        if (sieve[i]) continue;
+    for (long long i = 3LL; i <= 1000000LL; i += 2) {
+        if (sieve[i])
+            continue;
         bool possible = false;
 
         for (auto p : primes) {
-            if (p > i) break;
+            if (p > i)
+                break;
             for (auto s : squares) {
                 long long res = p + 2 * s;
-                if (res > i) break;
-                if (res == i) possible = true;
+                if (res > i)
+                    break;
+                if (res == i)
+                    possible = true;
             }
-            if (possible) break;
+            if (possible)
+                break;
         }
 
-        if (!possible) return i;
+        if (!possible)
+            return i;
     }
 
     //This should never happen

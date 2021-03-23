@@ -8,12 +8,12 @@
 
 using namespace std;
 
-int IntersectingSegments(const vector<pair<int, int>> &segments) {
+int IntersectingSegments(const vector<pair<int, int>>& segments) {
 
     vector<pair<int, char>> events;
     for (int i = 0; i < (int)segments.size(); i++) {
-        events.push_back({segments[i].first, 'S'});
-        events.push_back({segments[i].second, 'E'});
+        events.push_back({ segments[i].first, 'S' });
+        events.push_back({ segments[i].second, 'E' });
     }
 
     sort(events.begin(), events.end());
@@ -24,8 +24,7 @@ int IntersectingSegments(const vector<pair<int, int>> &segments) {
         if (events[i].second == 'S') {
             counter++;
             maxVal = max(maxVal, counter);
-        }
-        else {
+        } else {
             counter--;
         }
     }

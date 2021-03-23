@@ -3,13 +3,13 @@
 //Best case complexity: O(n)
 //Average case complexity: O(n^2)
 //Worst case complexity: O(n^2)
-//Becomes slow after n = 2000, and unusable after n = 10000. 
+//Becomes slow after n = 2000, and unusable after n = 10000.
 //Since each insertion works in O(n), it is better to use this algorithm when we have an already sorted array, and just want to add more values.
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void InsertionSort(vector<int> &v, int sortedEnd) {
+void InsertionSort(vector<int>& v, int sortedEnd) {
     int i = sortedEnd;
     while (i < (int)v.size()) {
         int j = i;
@@ -21,7 +21,7 @@ void InsertionSort(vector<int> &v, int sortedEnd) {
     }
 }
 
-void InsertionSort(vector<int> &v) {
+void InsertionSort(vector<int>& v) {
     InsertionSort(v, 1);
 }
 
@@ -29,9 +29,11 @@ int main() {
     int n;
     cin >> n;
     vector<int> elements(n);
-    for (int i = 0; i < n; i++) cin >> elements[i];
+    for (int i = 0; i < n; i++)
+        cin >> elements[i];
     InsertionSort(elements);
     cout << "Sorted array:\n";
-    for (auto a : elements) cout << a << ' ';
+    for (auto a : elements)
+        cout << a << ' ';
     cout << '\n';
 }

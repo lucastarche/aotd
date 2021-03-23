@@ -7,34 +7,35 @@
 using namespace std;
 
 class DiffArray {
-    private:
-        vector<int> arr;
-    public:
-        DiffArray(vector<int> in) {
-            int n = (int)in.size();
-            arr.resize(n + 1);
-            arr[0] = in[0];
-            arr[n] = 0;
-            for (int i = 1; i < n; i++) {
-                arr[i] = in[i] - in[i - 1];
-            }
-        }
+private:
+    vector<int> arr;
 
-        //Adds x to every element from l to r
-        void update(int x, int l, int r) {
-            arr[l] += x;
-            arr[r + 1] -= x;
+public:
+    DiffArray(vector<int> in) {
+        int n = (int)in.size();
+        arr.resize(n + 1);
+        arr[0] = in[0];
+        arr[n] = 0;
+        for (int i = 1; i < n; i++) {
+            arr[i] = in[i] - in[i - 1];
         }
+    }
 
-        vector<int> getArray() {
-            int n = (int)arr.size();
-            vector<int> ans(n - 1);
-            ans[0] = arr[0];
-            for (int i = 1; i < n; i++) {
-                ans[i] = arr[i] + ans[i - 1];
-            }
-            return ans;
+    //Adds x to every element from l to r
+    void update(int x, int l, int r) {
+        arr[l] += x;
+        arr[r + 1] -= x;
+    }
+
+    vector<int> getArray() {
+        int n = (int)arr.size();
+        vector<int> ans(n - 1);
+        ans[0] = arr[0];
+        for (int i = 1; i < n; i++) {
+            ans[i] = arr[i] + ans[i - 1];
         }
+        return ans;
+    }
 };
 
 int main() {

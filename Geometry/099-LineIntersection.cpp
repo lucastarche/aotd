@@ -4,8 +4,8 @@
 //|a2 b2 c2|
 //This system has only one solution if the lines are not parallel.
 //Runtime: O(1)
-#include "Point.cpp"
 #include "Line.cpp"
+#include "Point.cpp"
 
 //Note: we must make sure the lines are not parallel before calling the method.
 Point lineIntersection(Line line1, Line line2) {
@@ -14,7 +14,7 @@ Point lineIntersection(Line line1, Line line2) {
     double x = upper / lower;
 
     double y = 0.0;
-    if (line1.getB() > EPS) 
+    if (line1.getB() > EPS)
         y = -(line1.getA() * x + line1.getC());
     else
         y = -(line2.getA() * x + line2.getC());

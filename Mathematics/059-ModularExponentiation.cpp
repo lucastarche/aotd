@@ -9,11 +9,14 @@
 using namespace std;
 
 int ModularExponentiation(int x, int n, int m) {
-    if (x == 0) return 0;
-    if (n == 0) return 1; //x^0 = 1 if x != 0
+    if (x == 0)
+        return 0;
+    if (n == 0)
+        return 1; //x^0 = 1 if x != 0
     long long u = ModularExponentiation(x, n / 2, m);
     u = (u * u) % m;
-    if (n % 2 == 1) u = (u * x) % m;
+    if (n % 2 == 1)
+        u = (u * x) % m;
     return (int)u;
 }
 

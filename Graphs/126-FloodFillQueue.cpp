@@ -7,16 +7,16 @@
 
 using namespace std;
 
-vector<int> dx = {-1, 1, 0, 0};
-vector<int> dy = {0, 0, -1, 1};
+vector<int> dx = { -1, 1, 0, 0 };
+vector<int> dy = { 0, 0, -1, 1 };
 
-void FloodFill(vector<vector<char>> &mat, char replacement, int x, int y) {
+void FloodFill(vector<vector<char>>& mat, char replacement, int x, int y) {
     int n = (int)mat.size();
     int m = (int)mat[0].size();
     char target = mat[x][y];
 
     queue<pair<int, int>> q;
-    q.push({x, y});
+    q.push({ x, y });
     mat[x][y] = replacement;
 
     while (!q.empty()) {
@@ -27,13 +27,17 @@ void FloodFill(vector<vector<char>> &mat, char replacement, int x, int y) {
         for (int i = 0; i < (int)dx.size(); i++) {
             int a = x + dx[i];
             int b = y + dy[i];
-            if (a < 0 || b < 0) continue;
-            else if (a >= n || b >= m) continue;
-            else if (mat[a][b] == replacement) continue;
-            else if (mat[a][b] == target) continue;
+            if (a < 0 || b < 0)
+                continue;
+            else if (a >= n || b >= m)
+                continue;
+            else if (mat[a][b] == replacement)
+                continue;
+            else if (mat[a][b] == target)
+                continue;
             else {
                 mat[a][b] = replacement;
-                q.push({a, b});
+                q.push({ a, b });
             }
         }
     }
@@ -43,7 +47,7 @@ int main() {
     int n, m;
     cin >> n >> m;
     vector<vector<char>> mat(n, vector<char>(m));
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
             cin >> mat[i][j];
 

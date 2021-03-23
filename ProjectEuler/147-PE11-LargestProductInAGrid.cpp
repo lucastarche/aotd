@@ -10,7 +10,8 @@ long long solve(vector<vector<long long>> grid) {
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < (20 - 4); j++) {
             long long product = 1LL;
-            for (int k = j; k < j + 4; k++) product *= grid[i][k];
+            for (int k = j; k < j + 4; k++)
+                product *= grid[i][k];
             ans = max(ans, product);
         }
     }
@@ -19,7 +20,8 @@ long long solve(vector<vector<long long>> grid) {
     for (int j = 0; j < 20; j++) {
         for (int i = 0; i < (20 - 4); i++) {
             long long product = 1LL;
-            for (int k = i; k < i + 4; k++) product *= grid[k][i];
+            for (int k = i; k < i + 4; k++)
+                product *= grid[k][i];
             ans = max(ans, product);
         }
     }
@@ -28,7 +30,8 @@ long long solve(vector<vector<long long>> grid) {
     for (int i = 0; i < (20 - 4); i++) {
         for (int j = 0; j < (20 - 4); j++) {
             long long product = 1LL;
-            for (int k = 0; k < 4; k++) product *= grid[i + k][j + k];
+            for (int k = 0; k < 4; k++)
+                product *= grid[i + k][j + k];
             ans = max(ans, product);
         }
     }
@@ -37,7 +40,8 @@ long long solve(vector<vector<long long>> grid) {
     for (int i = 0; i < (20 - 4); i++) {
         for (int j = 0; j < (20 - 4); j++) {
             long long product = 1LL;
-            for (int k = 0; k < 4; k++) product *= grid[i + k][j + (4 - k)];
+            for (int k = 0; k < 4; k++)
+                product *= grid[i + k][j + (4 - k)];
             ans = max(ans, product);
         }
     }

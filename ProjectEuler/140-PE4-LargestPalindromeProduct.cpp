@@ -7,7 +7,7 @@
 
 long long solve() {
     long long ans = 0LL;
-    
+
     for (long long i = 100; i <= 999; i++) {
         for (long long j = i; j <= 999; j++) {
             if (is_palindrome(i * j)) {
@@ -15,7 +15,7 @@ long long solve() {
             }
         }
     }
-    
+
     return ans;
 }
 

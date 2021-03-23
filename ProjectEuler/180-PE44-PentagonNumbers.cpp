@@ -19,7 +19,7 @@ long long solve() {
             }
         }
     }
-    
+
     return ans;
 }
 

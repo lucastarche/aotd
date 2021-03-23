@@ -3,24 +3,25 @@
 //It is a modified DFS, so the runtime is O(n + m) with Adjacency List, and O(n^2) with Adjacency Matrix.
 #include "DAG.cpp"
 
-vector<int> toposort(DAG &g) {
+vector<int> toposort(DAG& g) {
     vector<int> order;
     priority_queue<int> pq;
     int n = g.getSize();
 
     vector<int> indegree(n + 1);
     for (int i = 1; i <= n; i++) {
-        if (!g.getIndegree(i)) pq.push(i);
+        if (!g.getIndegree(i))
+            pq.push(i);
         indegree[i] = g.getIndegree(i);
     }
-
 
     while (!pq.empty()) {
         int curr = pq.top();
         pq.pop();
         for (auto a : g.getNeighbours(curr)) {
             indegree[a]--;
-            if (indegree[a] == 0) pq.push(a);
+            if (indegree[a] == 0)
+                pq.push(a);
         }
         order.push_back(curr);
     }
@@ -44,6 +45,7 @@ int main() {
 
     vector<int> order = toposort(graph);
     cout << "Toposort: ";
-    for (auto a : order) cout << a << " ";
+    for (auto a : order)
+        cout << a << " ";
     cout << '\n';
 }

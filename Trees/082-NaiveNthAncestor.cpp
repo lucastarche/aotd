@@ -6,28 +6,30 @@
 using namespace std;
 
 class Tree {
-    private:
-        int n;
-        vector<int> parents;
-        vector<vector<int>> children;
-    public:
-        Tree() {
-            parents.resize(1, 0);
-            children.resize(1);
-            n = 1;
-        }
+private:
+    int n;
+    vector<int> parents;
+    vector<vector<int>> children;
 
-        void insert(int parent) {
-            parents.push_back(parent);
-            children.push_back({});
-            children[parent].push_back(n);
-            n++;
-        }
+public:
+    Tree() {
+        parents.resize(1, 0);
+        children.resize(1);
+        n = 1;
+    }
 
-        int NthAncestor(int node, int n) {
-            if (node == 0) return 0; //The root is its own ancestor
-            return NthAncestor(parents[node], n - 1);
-        }
+    void insert(int parent) {
+        parents.push_back(parent);
+        children.push_back({});
+        children[parent].push_back(n);
+        n++;
+    }
+
+    int NthAncestor(int node, int n) {
+        if (node == 0)
+            return 0; //The root is its own ancestor
+        return NthAncestor(parents[node], n - 1);
+    }
 };
 
 int main() {
@@ -47,4 +49,4 @@ int main() {
         cin >> node >> n;
         cout << tree.NthAncestor(node, n) << '\n';
     }
-} 
+}

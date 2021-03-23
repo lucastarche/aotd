@@ -13,12 +13,14 @@ long long solve() {
             long long curr = 0LL;
             for (long long k = 1LL; k <= j; k++) {
                 long long prod = i * k, pow = 1LL;
-                while (pow < prod) pow *= 10LL;
+                while (pow < prod)
+                    pow *= 10LL;
                 curr *= pow;
                 curr += prod;
             }
 
-            if (curr >= 1000000000LL) break;
+            if (curr >= 1000000000LL)
+                break;
 
             vector<int> digits(10, 0);
             long long copy = curr;
@@ -29,9 +31,11 @@ long long solve() {
 
             bool isPandigital = (digits[0] == 0);
             for (int i = 1; i < 10; i++) {
-                if (digits[i] != 1) isPandigital = false; 
-            } 
-            if (isPandigital) ans = max(ans, curr);
+                if (digits[i] != 1)
+                    isPandigital = false;
+            }
+            if (isPandigital)
+                ans = max(ans, curr);
         }
     }
 

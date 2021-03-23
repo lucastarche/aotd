@@ -6,51 +6,53 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 struct PQNode {
     T data;
     int priority;
 };
 
-template <typename T>
+template<typename T>
 class PriorityQueue {
-    private:
-        vector<PQNode<T>> nodes;
-    public:
-        PriorityQueue() { }
+private:
+    vector<PQNode<T>> nodes;
 
-        void push(T value, int priority) {
-            PQNode<T> nextNode;
-            nextNode.data = value;
-            nextNode.priority = priority;
+public:
+    PriorityQueue() { }
 
-            int index = 0;
-            for (PQNode<T> node : nodes) {
-                if (node.priority < nextNode.priority) {
-                    nodes.insert(index, nextNode);
-                    return;
-                }
-                index++;
+    void push(T value, int priority) {
+        PQNode<T> nextNode;
+        nextNode.data = value;
+        nextNode.priority = priority;
+
+        int index = 0;
+        for (PQNode<T> node : nodes) {
+            if (node.priority < nextNode.priority) {
+                nodes.insert(index, nextNode);
+                return;
             }
-
-            //If it has the worst priority so far, we push it in the end
-            nodes.push_back(nextNode);
+            index++;
         }
 
-        T top() {
-            return nodes.back().data;
-        }
+        //If it has the worst priority so far, we push it in the end
+        nodes.push_back(nextNode);
+    }
 
-        void pop() {
-            nodes.pop_back();
-        }
+    T top() {
+        return nodes.back().data;
+    }
 
-        bool empty() {
-            return nodes.empty();
-        }
+    void pop() {
+        nodes.pop_back();
+    }
+
+    bool empty() {
+        return nodes.empty();
+    }
 }
 
-int main() {
+int
+main() {
     int n;
     cin >> n;
     PriorityQueue<int> pq;

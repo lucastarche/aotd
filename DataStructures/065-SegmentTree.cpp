@@ -15,70 +15,74 @@ typedef struct {
 } TreeRange;
 
 class SegmentTree {
-    private:
-        const int IDENTITY = 0;
-        int n;
-        vector<TreeRange> st;
+private:
+    const int IDENTITY = 0;
+    int n;
+    vector<TreeRange> st;
 
-        static int nextPot(int n) {
-            int ans = 1;
-            while (ans < n) ans *= 2;
-            return ans;
+    static int nextPot(int n) {
+        int ans = 1;
+        while (ans < n)
+            ans *= 2;
+        return ans;
+    }
+
+    static inline int leftChild(int n) {
+        return 2 * n;
+    }
+
+    static inline int rightChild(int n) {
+        return 2 * n + 1;
+    }
+
+    static inline int parent(int n) {
+        return n / 2;
+    }
+
+public:
+    SegmentTree(vector<int> arr) {
+        n = (int)arr.size();
+        n = nextPot(n);
+
+        st.resize(2 * n);
+        arr.resize(n, IDENTITY);
+
+        for (int i = n; i < 2 * n; i++) {
+            st[i] = { arr[i - n], i, i };
         }
 
-        static inline int leftChild(int n) {
-            return 2 * n;
+        for (int i = n - 1; i >= 1; i--) {
+            st[i] = {
+                st[leftChild(i)].val + st[rightChild(i)].val,
+                st[leftChild(i)].l,
+                st[rightChild(i)].r
+            };
         }
+    }
 
-        static inline int rightChild(int n) {
-            return 2 * n + 1;
+    int query(int l, int r) {
+        return query(1, l + n - 1, r + n - 1);
+    }
+
+    void update(int pos, int val) {
+        st[pos].val = val;
+        while (pos > 0) {
+            pos = parent(pos);
+            st[pos].val = st[leftChild(pos)].val + st[rightChild(pos)].val;
         }
+    }
 
-        static inline int parent(int n) {
-            return n / 2;
-        }
-    public:
-        SegmentTree(vector<int> arr) {
-            n = (int)arr.size();
-            n = nextPot(n);
+private:
+    int query(int pos, int l, int r) {
+        if (st[pos].r < l || st[pos].l > r)
+            return IDENTITY;
+        else if (l <= st[pos].l && r >= st[pos].r)
+            return st[pos].val;
 
-            st.resize(2 * n);
-            arr.resize(n, IDENTITY);
-
-            for (int i = n; i < 2 * n; i++) {
-                st[i] = {arr[i - n], i, i};
-            }
-
-            for (int i = n - 1; i >= 1; i--) {
-                st[i] = {
-                    st[leftChild(i)].val + st[rightChild(i)].val,
-                    st[leftChild(i)].l,
-                    st[rightChild(i)].r
-                };
-            }
-        }
-
-        int query(int l, int r) {
-            return query(1, l + n - 1, r + n - 1);
-        }
-
-        void update(int pos, int val) {
-            st[pos].val = val;
-            while (pos > 0) {
-                pos = parent(pos);
-                st[pos].val = st[leftChild(pos)].val + st[rightChild(pos)].val;
-            }
-        }
-
-    private:
-        int query(int pos, int l, int r) {
-            if (st[pos].r < l || st[pos].l > r) return IDENTITY;
-            else if (l <= st[pos].l && r >= st[pos].r) return st[pos].val;
-
-            int leftQuery = query(leftChild(pos), l, r);
-            int rightQuery = query(rightChild(pos), l, r);
-            return leftQuery + rightQuery;
-        }
+        int leftQuery = query(leftChild(pos), l, r);
+        int rightQuery = query(rightChild(pos), l, r);
+        return leftQuery + rightQuery;
+    }
 };
 
 int main() {
@@ -99,8 +103,7 @@ int main() {
             int pos, val;
             cin >> pos >> val;
             st.update(pos, val);
-        }
-        else if (type == 'Q') {
+        } else if (type == 'Q') {
             int l, r;
             cout << st.query(l, r) << '\n';
         }

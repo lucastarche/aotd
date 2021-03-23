@@ -8,25 +8,26 @@
 using namespace std;
 
 class GraphEL {
-    private:
-        vector<pair<int, int>> edges;
-    public:
-        GraphEL(int n) {
-            edges.resize(n + 1);
-        }
+private:
+    vector<pair<int, int>> edges;
 
-        void addEdge(int a, int b) {
-            edges.push_back({a, b});
-        }
+public:
+    GraphEL(int n) {
+        edges.resize(n + 1);
+    }
 
-        bool connected(int from, int to) {
-            for (auto e : edges) {
-                if (e == make_pair(from, to) || e == make_pair(to, from)) {
-                    return true;
-                }
+    void addEdge(int a, int b) {
+        edges.push_back({ a, b });
+    }
+
+    bool connected(int from, int to) {
+        for (auto e : edges) {
+            if (e == make_pair(from, to) || e == make_pair(to, from)) {
+                return true;
             }
-            return false;
         }
+        return false;
+    }
 };
 
 int main() {
@@ -46,8 +47,7 @@ int main() {
         cin >> from >> to;
         if (graph.connected(from, to)) {
             cout << from << " is connected to " << to << '\n';
-        }
-        else {
+        } else {
             cout << from << " is not connected to " << to << '\n';
         }
     }

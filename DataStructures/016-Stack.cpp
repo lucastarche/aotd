@@ -5,50 +5,54 @@
 
 using namespace std;
 
-template <typename T>
+template<typename T>
 struct Node {
     T val;
-    struct Node *next;
-    struct Node *prev;
+    struct Node* next;
+    struct Node* prev;
 };
 
-template <typename T>
+template<typename T>
 class Stack {
-    private:
-        Node<T> *head, *tail;
-    public:
-        Stack() {
-            head = nullptr;
-            tail = nullptr;
-        }
+private:
+    Node<T>*head, *tail;
 
-        void push(int val) {
-            Node<T> *temp = new Node<T>;
-            temp->val = val;
-            temp->next = nullptr;
-            temp->prev = tail;
-            if (head == nullptr) head = tail = temp;
-            else tail = tail->next = temp;
-        }
+public:
+    Stack() {
+        head = nullptr;
+        tail = nullptr;
+    }
 
-        int pop() {
-            if (head == nullptr) throw length_error("The container is empty");
-            int ans = tail->val;
-            Node<T> *temp = tail;
-            tail = tail->prev;
-            delete temp;
-            return ans;
-        }
+    void push(int val) {
+        Node<T>* temp = new Node<T>;
+        temp->val = val;
+        temp->next = nullptr;
+        temp->prev = tail;
+        if (head == nullptr)
+            head = tail = temp;
+        else
+            tail = tail->next = temp;
+    }
 
-        bool empty() {
-            return head == nullptr;
-        }
+    int pop() {
+        if (head == nullptr)
+            throw length_error("The container is empty");
+        int ans = tail->val;
+        Node<T>* temp = tail;
+        tail = tail->prev;
+        delete temp;
+        return ans;
+    }
+
+    bool empty() {
+        return head == nullptr;
+    }
 };
 
 int main() {
     int n;
     cin >> n;
-    Stack<int> *s = new Stack<int>();
+    Stack<int>* s = new Stack<int>();
     for (int i = 0; i < n; i++) {
         int temp;
         cin >> temp;

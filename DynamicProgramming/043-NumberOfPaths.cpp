@@ -7,7 +7,7 @@
 
 const int MOD = 1e9 + 7;
 
-int NumberOfPaths (DAG &g) {
+int NumberOfPaths(DAG& g) {
     int n = g.getSize();
     vector<int> order = toposort(g);
     vector<int> ways(n + 1, 0);

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void BubbleSort(vector<int> &v) {
+void BubbleSort(vector<int>& v) {
     int n = (int)v.size();
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++) {
@@ -34,6 +34,7 @@ int main() {
 
     //Output
     cout << "Sorted array:\n";
-    for (auto i : elements) cout << i << " ";
+    for (auto i : elements)
+        cout << i << " ";
     cout << '\n';
 }

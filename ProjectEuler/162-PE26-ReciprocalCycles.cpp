@@ -1,6 +1,6 @@
 //PE 26: Reciprocal Cycles
 //Problem: Find the value of d < 1000 such that 1 / d cointains the longest recurring cycle in the decimal fraction part.
-//Solution: Note that a cycle occurs when the remainder modulo i has already been used. 
+//Solution: Note that a cycle occurs when the remainder modulo i has already been used.
 //We can keep track of the visited remainders, and then output the number for which the most remainders are visited.
 //This remainder has to be different from 0, because otherwise it ends in a cycle of 0.
 //Runtime: O(n^2)
@@ -16,7 +16,7 @@ long long solve() {
 
         bool hasCycle = true;
         int quotient = 0, remainder = 10;
-        
+
         while (true) {
             quotient = remainder / i;
             remainder = remainder % i;
@@ -27,14 +27,14 @@ long long solve() {
 
             if (used[remainder]) {
                 break;
-            }
-            else {
+            } else {
                 used[remainder] = true;
             }
             remainder *= 10;
-        } 
+        }
 
-        if (!hasCycle) continue;
+        if (!hasCycle)
+            continue;
 
         int curr = 0;
         for (int j = 0; j < i; j++) {
@@ -47,7 +47,7 @@ long long solve() {
         }
     }
 
-    return (long long) ans;
+    return (long long)ans;
 }
 
 int main() {

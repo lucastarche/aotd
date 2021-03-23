@@ -9,7 +9,7 @@ using namespace std;
 
 const int INF = 1e9;
 
-int RodCutting(const vector<int> &price, int n) {
+int RodCutting(const vector<int>& price, int n) {
     vector<int> memo(n + 1);
     memo[0] = 0;
     for (int j = 1; j <= n; j++) {
@@ -26,6 +26,7 @@ int main() {
     int n;
     cin >> n;
     vector<int> prices(n + 1, 0);
-    for (int i = 1; i <= n; i++) cin >> prices[i];
+    for (int i = 1; i <= n; i++)
+        cin >> prices[i];
     cout << RodCutting(prices, n);
 }

@@ -7,8 +7,10 @@
 long long solve() {
     long long ans = 0LL;
     for (long long i = 0LL; i < 1000000LL; i++) {
-        if (!is_palindrome(i)) continue;
-        if (!is_palindrome(to_binary_string(i))) continue;
+        if (!is_palindrome(i))
+            continue;
+        if (!is_palindrome(to_binary_string(i)))
+            continue;
         ans += i;
     }
     return ans;

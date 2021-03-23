@@ -6,13 +6,14 @@
 
 long long solve() {
     long long ans = 0LL, solutions = 0LL;
-        
+
     for (long long p = 1LL; p <= 1000LL; p++) {
         long long curr = 0LL;
         for (long long a = 1LL; a <= p; a++) {
             for (long long b = a; b <= p; b++) {
                 long long c = p - a - b;
-                if (a * a + b * b == c * c) curr++;
+                if (a * a + b * b == c * c)
+                    curr++;
             }
         }
 

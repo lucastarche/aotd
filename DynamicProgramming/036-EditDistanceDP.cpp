@@ -11,7 +11,7 @@ int min(int a, int b, int c) {
     return min(a, min(b, c));
 }
 
-int EditDistanceDP(string &a, string &b) {
+int EditDistanceDP(string& a, string& b) {
     int n = (int)a.size();
     int m = (int)b.size();
     vector<vector<int>> dist(n + 1, vector<int>(m + 1, INF));
@@ -29,13 +29,12 @@ int EditDistanceDP(string &a, string &b) {
         for (int j = 1; j <= m; j++) {
             if (a[i - 1] == b[j - 1]) {
                 dist[i][j] = dist[i - 1][j - 1];
-            }
-            else {
+            } else {
                 dist[i][j] = min(
-                    dist[i - 1][j],
-                    dist[i][j - 1],
-                    dist[i - 1][j - 1]
-                ) + 1;
+                                 dist[i - 1][j],
+                                 dist[i][j - 1],
+                                 dist[i - 1][j - 1])
+                    + 1;
             }
         }
     }

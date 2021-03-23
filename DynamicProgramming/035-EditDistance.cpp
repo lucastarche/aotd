@@ -14,18 +14,21 @@ int min(int a, int b, int c) {
     return min(a, min(b, c));
 }
 
-int EditDistance(string &a, string &b, int n, int m) {
-    if (n == 0) return m;
-    if (m == 0) return n;
-    if (a[n - 1] == b [m - 1]) return EditDistance(a, b, n - 1, m - 1);
+int EditDistance(string& a, string& b, int n, int m) {
+    if (n == 0)
+        return m;
+    if (m == 0)
+        return n;
+    if (a[n - 1] == b[m - 1])
+        return EditDistance(a, b, n - 1, m - 1);
     return min(
-        EditDistance(a, b, n - 1, m),
-        EditDistance(a, b, n, m - 1),
-        EditDistance(a, b, n - 1, m - 1)
-    ) + 1;
+               EditDistance(a, b, n - 1, m),
+               EditDistance(a, b, n, m - 1),
+               EditDistance(a, b, n - 1, m - 1))
+        + 1;
 }
 
-int EditDistance(string &a, string &b) {
+int EditDistance(string& a, string& b) {
     int n = (int)a.size();
     int m = (int)b.size();
     return EditDistance(a, b, n, m);

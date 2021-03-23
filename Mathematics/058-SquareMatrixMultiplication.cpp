@@ -8,7 +8,7 @@
 using namespace std;
 
 #define IntMatrix vector<vector<int>>
-IntMatrix MatrixMultiplication(const IntMatrix &A, const IntMatrix &B) {
+IntMatrix MatrixMultiplication(const IntMatrix& A, const IntMatrix& B) {
     int N = (int)A.size();
     IntMatrix C(N, vector<int>(N));
     for (int i = 0; i < N; i++) {

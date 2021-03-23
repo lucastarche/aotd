@@ -9,7 +9,8 @@ long long solve() {
     vector<bool> sieve = prime_sieve(1000000LL);
     vector<long long> primes;
     for (long long i = 0LL; i < (long long)sieve.size(); i++) {
-        if (sieve[i]) primes.push_back(i);
+        if (sieve[i])
+            primes.push_back(i);
     }
 
     long long ans = 0LL, ansAmount = 0LL;
@@ -18,7 +19,8 @@ long long solve() {
         long long sum = 0LL;
         for (long long j = i; j < n; j++) {
             sum += primes[j];
-            if (sum > 1000000LL) break;
+            if (sum > 1000000LL)
+                break;
             if (sieve[sum]) {
                 if (j - i > ansAmount) {
                     ansAmount = j - i;

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<int> StringMatching(string &str, string &pattern) {
+vector<int> StringMatching(string& str, string& pattern) {
     vector<int> ans;
     int n = (int)str.size();
     int m = (int)pattern.size();
@@ -20,7 +20,8 @@ vector<int> StringMatching(string &str, string &pattern) {
                 break;
             }
 
-            if (found) ans.push_back(i);
+            if (found)
+                ans.push_back(i);
         }
     }
 
@@ -31,10 +32,12 @@ int main() {
     string str, pattern;
     cin >> str >> pattern;
     auto ans = StringMatching(str, pattern);
-    if (ans.empty()) cout << pattern << " was not found.\n";
+    if (ans.empty())
+        cout << pattern << " was not found.\n";
     else {
         cout << pattern << " found at positions: ";
-        for (auto match : ans) cout << match << " ";
+        for (auto match : ans)
+            cout << match << " ";
         cout << '\n';
     }
 }

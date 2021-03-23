@@ -11,7 +11,8 @@ vector<vector<int>> PascalTriangle(int n) {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j <= i; j++) {
-            if (j == 0 || j == i) ret[i][j] = 1;
+            if (j == 0 || j == i)
+                ret[i][j] = 1;
             else {
                 ret[i][j] = ret[i - 1][j - 1] + ret[i - 1][j];
             }
@@ -27,7 +28,8 @@ int main() {
     auto ans = PascalTriangle(n);
     for (auto a : ans) {
         for (auto i : a) {
-            if (i == 0) continue;
+            if (i == 0)
+                continue;
             cout << i << ' ';
         }
         cout << '\n';

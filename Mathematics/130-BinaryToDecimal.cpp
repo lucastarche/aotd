@@ -10,7 +10,7 @@ int BinaryToDecimal(string binaryString) {
     int ans = 0, pow = 0;
     for (int i = n - 1; i >= 0; i--) {
         if (binaryString[i] == '1') {
-            ans += 1<<pow;
+            ans += 1 << pow;
         }
         pow++;
     }

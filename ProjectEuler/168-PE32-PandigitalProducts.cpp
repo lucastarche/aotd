@@ -33,18 +33,21 @@ long long solve() {
                 totalDigits++;
             }
 
-            if (totalDigits > 9) break;
+            if (totalDigits > 9)
+                break;
 
             bool isPandigital = true;
             if (digits[0] != 0) {
                 isPandigital = false;
             }
             for (int i = 1; i <= 9; i++) {
-                if (digits[i] != 1) isPandigital = false;
+                if (digits[i] != 1)
+                    isPandigital = false;
             }
 
             if (isPandigital) {
-                if (used[i * j]) continue;
+                if (used[i * j])
+                    continue;
                 used[i * j] = true;
                 ans += i * j;
             }

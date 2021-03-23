@@ -4,7 +4,7 @@
 //Solution: First we generate a prime sieve. After this, we iterate through the numbers in base 11, since we add the extra wildcard character.
 //After this, it is just a matter of checking how many primes can be formed with the given pattern.
 //Runtime: O(n log n)
-#include "EulerUtils.hpp" 
+#include "EulerUtils.hpp"
 
 long long solve() {
     vector<bool> sieve = prime_sieve(1000000);
@@ -28,23 +28,31 @@ long long solve() {
         reverse(num.begin(), num.end());
 
         bool hasWildcard = false;
-        for (auto c : num) if (c == '*') hasWildcard = true;
+        for (auto c : num)
+            if (c == '*')
+                hasWildcard = true;
 
-        if (num[0] == '0' || !hasWildcard) continue;
+        if (num[0] == '0' || !hasWildcard)
+            continue;
         pow = num.size();
-        
+
         int curr = 0, j_i = (num[0] == '*');
         long long ret;
         std::string copy = num;
         for (int j = j_i; j < 10; j++) {
             for (int k = 0; k < pow; k++) {
-                if (num[k] == '*') copy[k] = '0' + j;
-                else copy[k] = num[k];
+                if (num[k] == '*')
+                    copy[k] = '0' + j;
+                else
+                    copy[k] = num[k];
             }
-            if (sieve[stoll(copy)]) curr++;
-            if (curr == 1) ret = stoll(copy);
+            if (sieve[stoll(copy)])
+                curr++;
+            if (curr == 1)
+                ret = stoll(copy);
         }
-        if (curr >= 8) return ret;
+        if (curr >= 8)
+            return ret;
     }
 
     return -1;

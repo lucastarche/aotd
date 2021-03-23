@@ -5,13 +5,15 @@
 //Runtime: O(2^n), where n is the number of rows.
 #include "EulerUtils.hpp"
 
-long long solve(const vector<vector<long long>> &mat, int i, int j) {
-    if (j > i) return 0;
-    if (i == 14) return mat[i][j];
+long long solve(const vector<vector<long long>>& mat, int i, int j) {
+    if (j > i)
+        return 0;
+    if (i == 14)
+        return mat[i][j];
     return mat[i][j] + max(solve(mat, i + 1, j), solve(mat, i + 1, j + 1));
 }
 
-long long solve(const vector<vector<long long>> &mat) {
+long long solve(const vector<vector<long long>>& mat) {
     return solve(mat, 0, 0);
 }
 

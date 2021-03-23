@@ -4,7 +4,7 @@
 //Runtime: O(m log n)
 #include "GraphWAL.cpp"
 
-int Prim(GraphWAL &g) {
+int Prim(GraphWAL& g) {
     int n = g.getSize();
     vector<bool> taken(n + 1);
     priority_queue<pair<int, int>> pq;
@@ -13,7 +13,7 @@ int Prim(GraphWAL &g) {
         taken[node] = true;
         for (auto a : g.getNeighbours(node)) {
             if (!taken[a.second])
-                pq.push({-a.first, -a.second});
+                pq.push({ -a.first, -a.second });
         }
     };
 

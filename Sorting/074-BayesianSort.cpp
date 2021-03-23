@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void BayesianSort(vector<int> &arr) {  }
+void BayesianSort(vector<int>& arr) { }
 
 int main() {
     int n;
@@ -21,6 +21,7 @@ int main() {
     BayesianSort(arr);
 
     cout << "Sorted array:\n";
-    for (auto i : arr) cout << i << " ";
+    for (auto i : arr)
+        cout << i << " ";
     cout << '\n';
 }

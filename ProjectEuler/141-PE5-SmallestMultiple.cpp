@@ -1,5 +1,5 @@
 //PE5: Smallest Multiple
-//Problem statement: find the smallest number which can divide all the numbers from 1 to 20. 
+//Problem statement: find the smallest number which can divide all the numbers from 1 to 20.
 //Solution: We can see which is the highest power possible of all the primes lower than 20, and then multiply them together.
 //For this, we will create a function to add to the utilities header, which is called primes_up_to()
 //Runtime: O(n * sqrt(n))

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void SelectionSort(vector<int> &v) {
+void SelectionSort(vector<int>& v) {
     int n = (int)v.size();
     for (int i = 0; i < n; i++) {
         int minElement = v[i];
@@ -38,6 +38,7 @@ int main() {
 
     //Output
     cout << "Sorted array:\n";
-    for (auto i : elements) cout << i << " ";
+    for (auto i : elements)
+        cout << i << " ";
     cout << '\n';
 }

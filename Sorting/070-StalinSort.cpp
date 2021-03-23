@@ -8,16 +8,16 @@
 using namespace std;
 
 vector<int> StalinSort(vector<int> arr) {
-    vector<int> ans = {arr[0]};
+    vector<int> ans = { arr[0] };
     for (int i = 1; i < (int)arr.size(); i++)
         if (ans[ans.size() - 1] <= arr[i])
             ans.push_back(arr[i]);
     return ans;
 }
 
-void StalinSortInplace(vector<int> &arr) {
+void StalinSortInplace(vector<int>& arr) {
     int lptr = 0, rptr = 1;
-    while(rptr < (int)arr.size()) {
+    while (rptr < (int)arr.size()) {
         if (arr[lptr] <= arr[rptr]) {
             lptr++;
             arr[lptr] = arr[rptr];
@@ -39,11 +39,13 @@ int main() {
     auto ans = StalinSort(arr);
 
     cout << "Sorted array: ";
-    for (auto a : ans) cout << a << " ";
+    for (auto a : ans)
+        cout << a << " ";
     cout << '\n';
 
     StalinSortInplace(arr);
 
-    for (auto a : arr) cout << a << " ";
+    for (auto a : arr)
+        cout << a << " ";
     cout << '\n';
 }

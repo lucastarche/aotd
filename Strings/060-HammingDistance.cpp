@@ -9,12 +9,14 @@ using namespace std;
 
 const int INF = 1e9;
 
-int HammingDistance(string &a, string &b) {
+int HammingDistance(string& a, string& b) {
     int ans = 0;
-    if (a.length() != b.length()) return INF;
+    if (a.length() != b.length())
+        return INF;
 
     for (int i = 0; i < (int)a.length(); i++) {
-        if (a[i] != b[i]) ans++;
+        if (a[i] != b[i])
+            ans++;
     }
 
     return ans;
@@ -24,6 +26,8 @@ int main() {
     string a, b;
     cin >> a >> b;
     int ans = HammingDistance(a, b);
-    if (ans >= INF) cout << "The strings have different lengths." << '\n';
-    else cout << "The hamming distance is: " << ans << '\n';
+    if (ans >= INF)
+        cout << "The strings have different lengths." << '\n';
+    else
+        cout << "The hamming distance is: " << ans << '\n';
 }

@@ -7,7 +7,7 @@
 using namespace std;
 
 //Similar to aotd#47
-vector<int> StringBorders(const string &str) {
+vector<int> StringBorders(const string& str) {
     int n = (int)str.length();
     vector<int> border(n + 1, 0);
 
@@ -16,8 +16,10 @@ vector<int> StringBorders(const string &str) {
     for (int i = 1; i <= n; i++) {
         j = border[i - 1];
         while (j >= 0) {
-            if (str[j] == str[i - 1]) break;
-            else j = border[j];
+            if (str[j] == str[i - 1])
+                break;
+            else
+                j = border[j];
         }
 
         border[i] = j + 1;
@@ -26,12 +28,13 @@ vector<int> StringBorders(const string &str) {
     return border;
 }
 
-vector<int> KMP(const string &text, const string &pattern) {
+vector<int> KMP(const string& text, const string& pattern) {
     vector<int> borders = StringBorders(pattern);
     int n = (int)text.length();
     int m = (int)pattern.length();
 
-    if (n < m) return {};
+    if (n < m)
+        return {};
 
     vector<int> ans;
     int i = 0, k = 0;
@@ -43,8 +46,7 @@ vector<int> KMP(const string &text, const string &pattern) {
                 ans.push_back(i - k);
                 k = borders[k];
             }
-        }
-        else {
+        } else {
             k = borders[k];
             if (k < 0) {
                 i++;
@@ -61,10 +63,12 @@ int main() {
     getline(cin, str);
     getline(cin, pattern);
     auto ans = KMP(str, pattern);
-    if (ans.empty()) cout << pattern << " was not found.\n";
+    if (ans.empty())
+        cout << pattern << " was not found.\n";
     else {
         cout << pattern << " found at positions: ";
-        for (auto match : ans) cout << match << " ";
+        for (auto match : ans)
+            cout << match << " ";
         cout << '\n';
     }
 }

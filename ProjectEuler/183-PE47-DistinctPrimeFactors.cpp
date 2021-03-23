@@ -8,7 +8,8 @@ long long solve() {
     vector<int> factors(1000000LL, 0);
 
     for (long long i = 2; i < 1000000LL; i++) {
-        if (factors[i] != 0) continue;
+        if (factors[i] != 0)
+            continue;
         factors[i] = 1;
 
         for (long long j = 2 * i; j < 1000000LL; j += i) {
@@ -19,9 +20,11 @@ long long solve() {
     for (long long i = 1; i < 1000000LL; i++) {
         bool possible = true;
         for (long long j = i; j < i + 4; j++) {
-            if (factors[j] != 4) possible = false;
+            if (factors[j] != 4)
+                possible = false;
         }
-        if (possible) return i;
+        if (possible)
+            return i;
     }
     return -1;
 }

@@ -7,18 +7,20 @@
 
 using namespace std;
 
-int Knapsack(vector<pair<int, int>> &objects, int w) {
+int Knapsack(vector<pair<int, int>>& objects, int w) {
     int n = (int)objects.size();
     vector<vector<int>> value(n + 1, vector<int>(w + 1, 0));
 
     for (int i = 0; i <= n; i++) {
         for (int j = 0; j <= w; j++) {
-            if (i == 0 || j == 0) continue;
-            if (objects[i - 1].first > j) value[i][j] = value[i - 1][j];
-            else value[i][j] = max(
-                value[i - 1][j - objects[i - 1].first] + objects[i - 1].second,
-                value[i - 1][j]
-            );
+            if (i == 0 || j == 0)
+                continue;
+            if (objects[i - 1].first > j)
+                value[i][j] = value[i - 1][j];
+            else
+                value[i][j] = max(
+                    value[i - 1][j - objects[i - 1].first] + objects[i - 1].second,
+                    value[i - 1][j]);
         }
     }
 
@@ -32,7 +34,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int a, b;
         cin >> a >> b;
-        obj[i] = {a, b};
+        obj[i] = { a, b };
     }
 
     cout << "The max possible value is " << Knapsack(obj, w) << '\n';

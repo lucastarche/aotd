@@ -6,8 +6,9 @@
 
 using namespace std;
 
-void Slowsort(vector<int> &arr, int i, int j) {
-    if (i >= j) return;
+void Slowsort(vector<int>& arr, int i, int j) {
+    if (i >= j)
+        return;
     int m = (i + j) / 2;
     Slowsort(arr, i, m);
     Slowsort(arr, m + 1, j);
@@ -17,7 +18,7 @@ void Slowsort(vector<int> &arr, int i, int j) {
     Slowsort(arr, i, j - 1);
 }
 
-void Slowsort(vector<int> &arr) {
+void Slowsort(vector<int>& arr) {
     int j = (int)arr.size();
     Slowsort(arr, 0, j - 1);
 }
@@ -33,6 +34,7 @@ int main() {
     Slowsort(arr);
 
     cout << "Sorted array: ";
-    for (auto a : arr) cout << a << " ";
+    for (auto a : arr)
+        cout << a << " ";
     cout << '\n';
 }

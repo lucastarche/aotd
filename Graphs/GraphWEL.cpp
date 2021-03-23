@@ -3,25 +3,25 @@
 using namespace std;
 
 class GraphWEL {
-    private:
-        vector<tuple<int, int, int>> edges;
-        int size;
-    public:
-        GraphWEL(int n) {
-            size = n;
-        }
+private:
+    vector<tuple<int, int, int>> edges;
+    int size;
 
-        void addEdge(int a, int b, int w) {
-            edges.push_back(
-                make_tuple(w, a, b)
-            );
-        }
+public:
+    GraphWEL(int n) {
+        size = n;
+    }
 
-        int getSize() {
-            return size;
-        }
+    void addEdge(int a, int b, int w) {
+        edges.push_back(
+            make_tuple(w, a, b));
+    }
 
-        vector<tuple<int, int, int>> getEdges() {
-            return edges;
-        }
+    int getSize() {
+        return size;
+    }
+
+    vector<tuple<int, int, int>> getEdges() {
+        return edges;
+    }
 };

@@ -10,7 +10,8 @@ long long solve() {
     long long ans = 0LL;
     for (long long i = 1; i <= 1000; i++) {
         long long temp = 1;
-        for (long long j = 0; j < i; j++) temp = (temp * i) % mod;
+        for (long long j = 0; j < i; j++)
+            temp = (temp * i) % mod;
         ans = (ans + temp) % mod;
     }
     return (long long)ans;

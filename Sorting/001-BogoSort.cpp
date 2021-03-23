@@ -2,13 +2,13 @@
 //Consists of shuffling the array until it's sorted
 //Best case Complexity: O(n)
 //Average case Complexity: O(n * n!)
-//Worst case Complexity: O(infinite) 
+//Worst case Complexity: O(infinite)
 //Becomes slow after n = 15, and unusable after n = 20
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void BogoSort(vector<int> &v) {
+void BogoSort(vector<int>& v) {
     while (!is_sorted(v.begin(), v.end())) {
         random_shuffle(v.begin(), v.end());
     }
@@ -29,6 +29,7 @@ int main() {
 
     //Output
     cout << "Sorted array:\n";
-    for (auto i : elements) cout << i << " ";
+    for (auto i : elements)
+        cout << i << " ";
     cout << '\n';
 }
