@@ -1,3 +1,10 @@
+//PE 58: Spiral Primes
+//Problem: Given a counter clockwise number spiral, find the side length for which the prime to total numbers in the diagonals first falls below 10%.
+//Solution: We can get the numbers in the diagonals as we did in an earlier problem, with the formula (n - 2)^2 + (n - 1) * i for 1 < i <= 4.
+//Then, we simply have to check how many of the numbers in the diagonals are prime or not.
+//Note that for i = 4, the number is a perfect square, so we can safely skip it, since:
+//(n - 2)^2 + (n - 1) * 4 = n^2 - 4n + 4 + 4n - 4 = n^2, which will never be prime
+//Runtime: O(n), where n is the side length.
 #include "EulerUtils.hpp"
 
 long long solve() {
