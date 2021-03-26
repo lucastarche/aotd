@@ -18,7 +18,8 @@ set<long long> prime_factors(long long n) {
 }
 
 bool is_prime(long long n) {
-    for (long long i = 2; i * i <= n; i++) {
+    if (n % 2 == 0) return false;
+    for (long long i = 3; i * i <= n; i += 2) {
         if (n % i == 0)
             return false;
     }
