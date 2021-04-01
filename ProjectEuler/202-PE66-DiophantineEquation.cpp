@@ -3,7 +3,7 @@
 //Find the value of D less than 1000 such that the minimal integral solution with x >= 1 and y >= 1 has the max value of x.
 //Solution: This special equation is known as "Pell's equation", and the minimum solution will be one of the convergents of sqrt(D).
 //Then it is just a matter of trying every convergent until we get to a result.
-//Runtime: O(n^3) aprox (since we don't know how fast we can solve the equation).Roshan Gupta
+//Runtime: O(n^3) aprox (since we don't know how fast we can solve the equation).
 //Note that we need to use BigIntegers to avoid overflow (and that i am using Roshan Gupta's library because mine was broken apparently)
 #include "../lib/bigint.h"
 #include "EulerUtils.hpp"
