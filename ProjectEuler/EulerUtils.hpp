@@ -18,7 +18,8 @@ set<long long> prime_factors(long long n) {
 }
 
 bool is_prime(long long n) {
-    if (n % 2 == 0) return false;
+    if (n % 2 == 0)
+        return false;
     for (long long i = 3; i * i <= n; i += 2) {
         if (n % i == 0)
             return false;
@@ -151,4 +152,10 @@ string to_binary_string(long long n) {
     }
     reverse(ans.begin(), ans.end());
     return ans;
+}
+
+long long gcd(long long lhs, long long rhs) {
+    if (rhs == 0)
+        return lhs;
+    return gcd(rhs, lhs % rhs);
 }
