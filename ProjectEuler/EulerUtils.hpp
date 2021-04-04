@@ -159,3 +159,65 @@ long long gcd(long long lhs, long long rhs) {
         return lhs;
     return gcd(rhs, lhs % rhs);
 }
+
+vector<long long> lowest_prime_divisor_sieve(long long n) {
+    vector<long long> res(n + 1);
+    //Note: We are using 1 just to prevent dividing by 0 or other sentinel value
+    res[0] = 1;
+    res[1] = 1;
+
+    for (int i = 2; i <= n; i++) {
+        if (res[i])
+            continue;
+        res[i] = i;
+        for (int j = 2 * i; j <= n; j += i) {
+            if (res[j])
+                continue;
+            res[j] = i;
+        }
+    }
+
+    return res;
+}
+
+vector<long long> totient_sieve(long long n) {
+    vector<long long> res(n + 1);
+    res[0] = 0;
+    res[1] = 0;
+
+    vector<long long> lowest_divisor = lowest_prime_divisor_sieve(n);
+    for (int i = 2; i <= n; i++) {
+        if (lowest_divisor[i] == i) {
+            res[i] = i - 1;
+        }
+
+        map<long long, long long> divisors;
+        long long curr = i;
+        while (lowest_divisor[curr] != 1) {
+            divisors[lowest_divisor[curr]]++;
+            curr /= lowest_divisor[curr];
+        }
+
+        if (divisors.size() == 1) {
+            long long div = lowest_divisor[i];
+            long long pow = divisors[div];
+            long long pk = 1;
+            for (int k = 0; k < pow; k++)
+                pk *= div;
+
+            res[i] = pk - pk / div;
+        } else {
+            res[i] = 1;
+            for (auto a : divisors) {
+                long long pow = a.second;
+                long long val = 1;
+                for (int k = 0; k < pow; k++)
+                    val *= a.first;
+
+                res[i] *= res[val];
+            }
+        }
+    }
+
+    return res;
+}
