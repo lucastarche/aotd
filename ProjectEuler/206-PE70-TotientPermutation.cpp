@@ -1,5 +1,5 @@
 //PE 70: Totient Permutation
-//Problem: Find the greatest value of n lower than 10^7 such that phi(n) is a permutation of n.
+//Problem: Find the value of n lower than 10^7 such that phi(n) is a permutation of n, and n/phi(n) is the least possible.
 //Solution: We can build a sieve with the functions from yesterday, and then just check for every number.
 //Note that there is probably a better way, but I'm lazy and it works fast enough.
 //Runtime: O(n log n)
