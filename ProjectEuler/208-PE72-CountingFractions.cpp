@@ -7,13 +7,8 @@
 #include "EulerUtils.hpp"
 
 long long solve() {
-    vector<long long> sieve = totient_sieve(1000001);
-
-    long long ans = 0;
-    for (int i = 2; i < 1000001; i++) {
-        ans += sieve[i];
-    }
-    return ans;
+    vector<long long> sieve = totient_sieve(1000000);
+    return accumulate(sieve.begin(), sieve.end(), 0LL);
 }
 
 int main() {
