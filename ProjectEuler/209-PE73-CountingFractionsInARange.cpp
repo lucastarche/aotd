@@ -2,7 +2,7 @@
 //Problem: Count the number of irreducible fractions between 1/3 and 1/2 such that d <= 12000
 //Solution: We can employ bruteforce for this problem, given that d is quite small.
 //We simply have to check if they are in the range, and if they are irreducible or not.
-//Runtime: O(n^2)
+//Runtime: O(n^2 log n)
 #include "EulerUtils.hpp"
 
 using fraction = pair<long long, long long>;
