@@ -17,7 +17,7 @@ public:
         int N = (int)arr.size();
         tree.resize(N + 1, 0);
         for (int i = 1; i <= N; i++) {
-            replace(i, arr[i]);
+            adjust(i, arr[i]);
         }
     }
 
@@ -25,8 +25,7 @@ public:
         return index & -index;
     }
 
-    void replace(int index, int val) {
-        int delta = val - tree[index];
+    void adjust(int index, int delta) {
         while (index <= tree.size()) {
             tree[index] += delta;
             index += LeastSignificantOne(index);
@@ -65,7 +64,8 @@ int main() {
         if (type == 'U') {
             int index, val;
             cin >> index >> val;
-            FT.replace(index, val);
+            FT.adjust(index, val - arr[index]);
+            arr[index] = val;
         } else if (type == 'Q') {
             int from, to;
             cin >> from >> to;
