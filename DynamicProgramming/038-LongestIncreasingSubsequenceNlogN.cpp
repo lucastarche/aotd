@@ -9,18 +9,14 @@ using namespace std;
 
 int LIS(vector<int>& v) {
     int n = (int)v.size();
-    int length = 1;
+    int length = 0;
     vector<int> last(n, 0);
-    last[0] = v[0];
 
-    for (int i = 1; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         int ans = lower_bound(last.begin(), last.begin() + length, v[i]) - last.begin();
-        if (ans == length) {
-            length++;
-            last[length] = v[i];
-        } else {
-            last[ans] = v[i];
-        }
+        last[ans] = v[i];
+        if (ans + 1 > length)
+            length = ans + 1;
     }
 
     return length;
