@@ -21,7 +21,7 @@ int main() {
 
     int a = 0, b = n - 1;
     bool found = false;
-    while (b - a > 1) {
+    while (b != a) {
         int sum = nums[a].first + nums[b].first;
         if (sum == x) {
             cout << nums[a].second << ' ' << nums[b].second << '\n';
@@ -30,7 +30,7 @@ int main() {
         } else if (sum < x) {
             a++;
         } else {
-            b++;
+            b--;
         }
     }
 
