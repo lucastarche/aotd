@@ -17,9 +17,12 @@ int main() {
 
     vector<pair<int, int>> movies(n);
     for (int i = 0; i < n; i++)
-        cin >> movies[i].second >> movies[i].first;
+        cin >> movies[i].first >> movies[i].second;
 
-    sort(movies.begin(), movies.end());
+    sort(movies.begin(), movies.end(),
+        [](const pair<int, int>& a, const pair<int, int>& b) -> bool {
+            return ((a.second < b.second) || (a.second == b.second && a.first < b.first));
+        });
 
     multiset<int> endings;
     for (int i = 0; i < k; i++)
@@ -27,11 +30,11 @@ int main() {
 
     int ans = 0;
     for (int i = 0; i < n; i++) {
-        auto it = endings.upper_bound(movies[i].second);
+        auto it = endings.upper_bound(movies[i].first);
         if (it == endings.begin())
             continue;
         endings.erase(--it);
-        endings.insert(movies[i].first);
+        endings.insert(movies[i].second);
         ans++;
     }
 
