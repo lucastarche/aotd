@@ -1,7 +1,7 @@
 //Removal Game
 //Problem: We have two players and an array with n integers. The players take turns and take either the first or last element of the array,
 //and add it to their total score. Players try to maximize their score and always play optimally. Find the score of player one
-//Solution: We can use minimax in conjunction with Dynamic Programming to compute the differencce between player1 and player2, if they play in the subarray [i, j]
+//Solution: We can use minimax in conjunction with Dynamic Programming to compute the difference between player1 and player2, if they play in the subarray [i, j]
 //This can be figured out since the answer is just the opposite of the difference of the next subarray, plus the value they take
 //Then, to find the score of player one, we have s1 + s2 = total, and s1 - s2 = dp[0][n - 1].
 //We add this two to get 2s1 = total + dp[0][n - 1], and then print this sum divided by two
