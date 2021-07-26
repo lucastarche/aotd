@@ -2,7 +2,7 @@
 //Problem: Given a weighted directed graph, find the shortest distance from 1 to n, how many paths from 1 to n have this property modulo 1e9 + 7,
 //the minimum number of edges a shortest path can have, and the maximum number of edges a shortest path can have
 //Solution: Despite asking for multiple things, these can all be done in the same Dijkstra execution.
-//The idea is that we keep track of all four properties, and we update them as it corresponds when we find a shorter path, or one of equal lenght
+//The idea is that we keep track of all four properties, and we update them as it corresponds when we find a shorter path, or one of equal length
 //Runtime: O(m + n log n)
 #include <bits/stdc++.h>
 
