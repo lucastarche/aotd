@@ -2,7 +2,7 @@
 //Problem: Given a list of n toppings and m requests of the form (+- i or +- j), find if there is a way to make a pizza so that every request is accomplished (aka solve 2-SAT or 2-Satisfiability)
 //Solution: We will have a graph with 2n nodes: node 2i indicates that we do not choose topping i, while 2i + 1 that we do.
 //For each request we can form two edges: +i or -j makes it so if we dont choose i, we cant choose j, or that if we choose j we have to choose i.
-//2-SAT is solveable if there is no Strongly Connected Component in the graph such that 2i and 2i + 1 belong to the same component.
+//2-SAT is solvable if there is no Strongly Connected Component in the graph such that 2i and 2i + 1 belong to the same component.
 //For this we use Kosaraju's algorithm, and we visit the components from biggest to smallest number, choosing the node value for the topping if it does not have one already.
 //Runtime: O(n + m)
 #include <bits/stdc++.h>
