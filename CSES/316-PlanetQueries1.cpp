@@ -10,34 +10,33 @@
 
 using namespace std;
 
+const int MAXN = 2e5;
+int next_val[MAXN + 10][31];
+
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     int n, q;
-    cin >> n >> q;
+    scanf("%d %d", &n, &q);
 
-    vector<vector<int>> next(n + 1, vector<int>(31, -1));
     for (int i = 1; i <= n; i++) {
-        cin >> next[i][0];
+        cin >> next_val[i][0];
     }
 
     for (int j = 1; j < 31; j++) {
         for (int i = 1; i <= n; i++) {
-            next[i][j] = next[next[i][j - 1]][j - 1];
+            next_val[i][j] = next_val[next_val[i][j - 1]][j - 1];
         }
     }
 
     for (int q_i = 0; q_i < q; q_i++) {
         int x, k;
-        cin >> x >> k;
+        scanf("%d %d", &x, &k);
 
         for (int j = 0; j < 31; j++) {
             if (k & (1 << j)) {
-                x = next[x][j];
+                x = next_val[x][j];
             }
         }
 
-        cout << x << '\n';
+        printf("%d\n", x);
     }
 }
