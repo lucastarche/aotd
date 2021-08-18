@@ -7,13 +7,13 @@
 
 using namespace std;
 
-vector<int> Factor(int n) {
-    vector<int> ans;
+vector<long long> Factor(long long n) {
+    vector<long long> ans;
     while (n % 2 == 0) {
         ans.push_back(2);
         n /= 2;
     }
-    for (int i = 3; i * i <= n; i += 2) {
+    for (long long i = 3; i * i <= n; i += 2) {
         while (n % i == 0) {
             ans.push_back(i);
             n /= i;
@@ -25,9 +25,9 @@ vector<int> Factor(int n) {
 }
 
 int main() {
-    int n;
+    long long n;
     cin >> n;
-    vector<int> ans = Factor(n);
+    vector<long long> ans = Factor(n);
 
     cout << "Factors: ";
     for (auto a : ans)
