@@ -4,7 +4,7 @@
 //where white represents we give the apple to the current kid, and black we increase the kid number.
 //We have exactly m - 1 black boxes, and each way of colouring them describes exactly one state
 //The number of ways we can colour them is (n + m - 1)! / (n - 1)! * m!, which is our answer
-//Runtime: O(n log m)
+//Runtime: O(n log mod)
 #include <bits/stdc++.h>
 
 using namespace std;
